@@ -12,6 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        checkVersion("locationOfVersionData.com/1.0.html")
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +23,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 
 }
+
+
+
 
