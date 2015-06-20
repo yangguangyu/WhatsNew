@@ -12,7 +12,21 @@ class MainViewController: UIViewController {
  
     
     override func viewDidAppear(animated: Bool) {
-        WhatsNewViewController.infoPageURL = NSURL(string: "http://google.com")!
-        WhatsNewViewController.displayIfNecessary(self)
+        
+        println("Happy Pugs started...")
+        
+        
+        //Option to post alert via a NSURL
+        WhatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com")!
+        WhatsNewController.displayFromHTMLIfNecessary(self, embedded:false)
+
+        
+        
+        //Option to post alert via an NSString
+//        WhatsNewController.infoString = "-Improved Pug tail control. \n-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
+//        WhatsNewController.displayFromStringIfNecessary(self)
+        
+        
+        
     }
 }

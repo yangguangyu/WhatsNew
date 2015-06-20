@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QPu-i8-KbV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -23,12 +23,33 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happypug.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-hG-eaJ">
+                                <rect key="frame" x="0.0" y="224" width="616" height="273"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="273" id="zvf-GW-gDH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Pugs: The Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w0-Wk-zWk">
+                                <rect key="frame" x="16" y="55" width="575" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="ArX-iA-bpJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="LzG-0D-4gd" firstAttribute="top" secondItem="OKX-sS-bNq" secondAttribute="bottom" constant="8" symbolic="YES" id="3Az-Di-vSl"/>
+                            <constraint firstItem="p8g-hG-eaJ" firstAttribute="top" secondItem="7w0-Wk-zWk" secondAttribute="bottom" constant="34" id="H70-zt-wyl"/>
                             <constraint firstItem="OKX-sS-bNq" firstAttribute="leading" secondItem="YG5-fB-Kgn" secondAttribute="leadingMargin" constant="-5" id="JbA-nP-hXf"/>
                             <constraint firstItem="OKX-sS-bNq" firstAttribute="trailing" secondItem="YG5-fB-Kgn" secondAttribute="trailingMargin" id="LsR-8W-ueh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7w0-Wk-zWk" secondAttribute="trailing" constant="-7" id="NZ5-rK-D5h"/>
+                            <constraint firstItem="p8g-hG-eaJ" firstAttribute="leading" secondItem="YG5-fB-Kgn" secondAttribute="leadingMargin" constant="-16" id="NgS-aR-noT"/>
+                            <constraint firstItem="7w0-Wk-zWk" firstAttribute="top" secondItem="Ks2-Xm-GRU" secondAttribute="bottom" constant="35" id="Ubb-Un-1tE"/>
+                            <constraint firstItem="7w0-Wk-zWk" firstAttribute="leading" secondItem="YG5-fB-Kgn" secondAttribute="leadingMargin" id="nZO-pD-yx7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p8g-hG-eaJ" secondAttribute="trailing" constant="-32" id="qW8-np-Xar"/>
                             <constraint firstItem="OKX-sS-bNq" firstAttribute="top" secondItem="Ks2-Xm-GRU" secondAttribute="bottom" constant="535" id="rcV-7I-Yvl"/>
                         </constraints>
                     </view>
@@ -37,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="323" y="-690"/>
         </scene>
-        <!--Whats New View Controller-->
+        <!--Whats New Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="WhatsNewViewController" id="BYZ-38-t0r" customClass="WhatsNewViewController" customModule="WhatsNew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WhatsNewViewController" id="BYZ-38-t0r" customClass="WhatsNewController" customModule="WhatsNew" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -48,11 +69,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-6r-v4f">
+                                <rect key="frame" x="0.0" y="76" width="600" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="531" id="4FU-Vt-rr2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4FU-Vt-rr2"/>
+                                    </mask>
+                                </variation>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-Qj-Q8k">
+                                <rect key="frame" x="12" y="28" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BxF-wb-vKM"/>
+                                    <constraint firstAttribute="height" constant="40" id="YBU-uk-AHC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="&lt; Return"/>
+                                <connections>
+                                    <action selector="backToApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Zr-qc-kOQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-0M-PUd">
+                                <rect key="frame" x="203" y="28" width="40" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="&lt;&lt;"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ya-67-ISg">
+                                <rect key="frame" x="251" y="28" width="99" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Refresh"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVP-8W-sRD">
+                                <rect key="frame" x="358" y="28" width="40" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="&gt;&gt;"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qh7-6r-v4f" firstAttribute="top" secondItem="KVP-8W-sRD" secondAttribute="bottom" constant="8" id="ZYu-k8-ikf"/>
+                            <constraint firstItem="U9c-Qj-Q8k" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="dkX-LV-Ute"/>
+                            <constraint firstItem="qh7-6r-v4f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="gmX-Hc-3Mi"/>
+                            <constraint firstItem="U9c-Qj-Q8k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="gy7-gR-7mF"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="qh7-6r-v4f" secondAttribute="bottom" constant="5" id="kuP-Eg-x3L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qh7-6r-v4f" secondAttribute="trailing" constant="-16" id="ws3-YO-8mk"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="whatsNewWebView" destination="qh7-6r-v4f" id="5Kq-RI-ZdT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="251" y="191"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="happypug.jpg" width="236" height="261"/>
+    </resources>
 </document>
