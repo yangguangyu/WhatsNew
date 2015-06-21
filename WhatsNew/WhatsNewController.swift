@@ -5,17 +5,14 @@
 //  Created by Dave Levy on 6/19/15.
 //  Copyright (c) 2015 Infusionsoft. All rights reserved.
 //
-
-import UIKit
-typealias Version = String
-
-
-
-
 // TODO: Learn how to do TODO.
 // FIXME: This fix me needs fixin'
 
 
+// MARK: Import and initialization
+
+import UIKit
+typealias Version = String
 
 
 
@@ -26,7 +23,7 @@ class WhatsNewController: UIViewController {
     
     static var infoPageURL: NSURL?
     static var infoString: NSString!
-    @IBOutlet weak var whatsNewWebView: UIWebView!
+    @IBOutlet weak var newWebView: UIWebView!
     
     
     override func viewDidLoad() {
@@ -94,6 +91,7 @@ class WhatsNewController: UIViewController {
         
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             self.showWebPage(embedded) //Show the webpage
+            
             ///////UNCOMMENT AFTER TESTS COMPLETE **** whatsNewVC.saveLatestVersionData(num)
             
         }
@@ -203,11 +201,15 @@ class WhatsNewController: UIViewController {
     
     
     
-    static func showWebPage(embedded: Bool) {
-        
-        
+   static func showWebPage(embedded: Bool) {
+    let whatsNewVC = WhatsNewController()
+
+    
         if embedded {
             println("Bing, a webpage is embedded.")
+            whatsNewVC.changeViewToWhatsNewHTML()
+            ////whatsNewVC.loadWebContent()
+
             
         } else {
             println("Bing, a webpage pops up.")
@@ -228,34 +230,59 @@ class WhatsNewController: UIViewController {
      
         println("Click back to app!")
         
-        loadWebContent()
+        loadWebContent()  //DELETEME: this will get deleted but it's here for testing.
+        
+        
+        changeViewBackToRootController()
         
     }
     
-     func loadWebContent() {
-        
+    func loadWebContent() {
+
         println("Load in that web page..")
         
         let url = NSURL(string: "http://www.infusionsoft.com")
+            
         let request = NSURLRequest(URL: url!)
-        whatsNewWebView.loadRequest(request)
+        
+        newWebView.loadRequest(request)
+        
+        
         
     }
     
+    func changeViewToWhatsNewHTML() {
+     
+ //FIXME: would if their storyboard isn't called Main???
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var viewController = mainStoryboard.instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
+        UIApplication.sharedApplication().keyWindow!.rootViewController = viewController;
+        
+    }
+  
+    func changeViewBackToRootController() {
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        return
+    
+    }
+    
+    
+    
     @IBAction func doRefresh(AnyObject) {
-        whatsNewWebView.reload()
+        newWebView.reload()
     }
     
     @IBAction func goBack(AnyObject) {
-        whatsNewWebView.goBack()
+        newWebView.goBack()
     }
     
     @IBAction func goForward(AnyObject) {
-        whatsNewWebView.goForward()
+        newWebView.goForward()
     }
     
     @IBAction func stop(AnyObject) {
-        whatsNewWebView.stopLoading()
+        newWebView.stopLoading()
     }
     
     

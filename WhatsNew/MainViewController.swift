@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
         
         //Option to post alert via a NSURL
         WhatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com")!
-        WhatsNewController.displayFromHTMLIfNecessary(self, embedded:false)
+        WhatsNewController.displayFromHTMLIfNecessary(self, embedded:true)
 
         
         
