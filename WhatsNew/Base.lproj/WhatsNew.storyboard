@@ -93,7 +93,7 @@
                                 </constraints>
                                 <state key="normal" title="&lt;&lt;"/>
                                 <connections>
-                                    <action selector="backButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ukP-1n-wPG"/>
+                                    <action selector="backHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="INX-7i-0on"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVP-8W-sRD">
@@ -156,7 +156,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="newWebView" destination="qh7-6r-v4f" id="ofr-V1-GBL"/>
+                        <outlet property="whatsNewWebView" destination="qh7-6r-v4f" id="5sd-2o-Nvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

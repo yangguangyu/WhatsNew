@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		688E996A1B34AE06001B25D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688E99691B34AE06001B25D2 /* AppDelegate.swift */; };
 		688E996C1B34AE06001B25D2 /* WhatsNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688E996B1B34AE06001B25D2 /* WhatsNewController.swift */; };
-		688E996F1B34AE06001B25D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688E996D1B34AE06001B25D2 /* Main.storyboard */; };
+		688E996F1B34AE06001B25D2 /* WhatsNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688E996D1B34AE06001B25D2 /* WhatsNew.storyboard */; };
 		688E99711B34AE06001B25D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688E99701B34AE06001B25D2 /* Images.xcassets */; };
 		688E99741B34AE06001B25D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 688E99721B34AE06001B25D2 /* LaunchScreen.xib */; };
 		688E99801B34AE06001B25D2 /* WhatsNewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688E997F1B34AE06001B25D2 /* WhatsNewTests.swift */; };
@@ -33,7 +33,7 @@
 		688E99681B34AE06001B25D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		688E99691B34AE06001B25D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		688E996B1B34AE06001B25D2 /* WhatsNewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewController.swift; sourceTree = "<group>"; };
-		688E996E1B34AE06001B25D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		688E996E1B34AE06001B25D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WhatsNew.storyboard; sourceTree = "<group>"; };
 		688E99701B34AE06001B25D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		688E99731B34AE06001B25D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		688E99791B34AE06001B25D2 /* WhatsNewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsNewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,9 +83,7 @@
 		688E99661B34AE06001B25D2 /* WhatsNew */ = {
 			isa = PBXGroup;
 			children = (
-				688E996D1B34AE06001B25D2 /* Main.storyboard */,
-				688E99721B34AE06001B25D2 /* LaunchScreen.xib */,
-				688E99691B34AE06001B25D2 /* AppDelegate.swift */,
+				688E996D1B34AE06001B25D2 /* WhatsNew.storyboard */,
 				688E996B1B34AE06001B25D2 /* WhatsNewController.swift */,
 				688E99911B387475001B25D2 /* WhatsNewVersionChecker.swift */,
 				688E99701B34AE06001B25D2 /* Images.xcassets */,
@@ -98,6 +96,8 @@
 		688E99671B34AE06001B25D2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				688E99691B34AE06001B25D2 /* AppDelegate.swift */,
+				688E99721B34AE06001B25D2 /* LaunchScreen.xib */,
 				688E998F1B35924D001B25D2 /* happypug.jpg */,
 				688E99681B34AE06001B25D2 /* Info.plist */,
 			);
@@ -201,7 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				688E996F1B34AE06001B25D2 /* Main.storyboard in Resources */,
+				688E996F1B34AE06001B25D2 /* WhatsNew.storyboard in Resources */,
 				688E99901B35924D001B25D2 /* happypug.jpg in Resources */,
 				688E99741B34AE06001B25D2 /* LaunchScreen.xib in Resources */,
 				688E99711B34AE06001B25D2 /* Images.xcassets in Resources */,
@@ -248,12 +248,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		688E996D1B34AE06001B25D2 /* Main.storyboard */ = {
+		688E996D1B34AE06001B25D2 /* WhatsNew.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				688E996E1B34AE06001B25D2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = WhatsNew.storyboard;
 			sourceTree = "<group>";
 		};
 		688E99721B34AE06001B25D2 /* LaunchScreen.xib */ = {
