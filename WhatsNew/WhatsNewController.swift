@@ -6,10 +6,8 @@
 //  Copyright (c) 2015 Infusionsoft. All rights reserved.
 //
 // TODO: Learn how to do TODO.
-// FIXME: This fix me needs fixin'
+// FIXME: This FIXME me needs fixin'
 
-
-// MARK: Import and initialization
 
 import UIKit
 typealias Version = String
@@ -23,12 +21,13 @@ class WhatsNewController: UIViewController {
     
     static var infoPageURL: NSURL?
     static var infoString: NSString?
+    static var storyboardString: NSString?
+    
     @IBOutlet var newWebView: UIWebView?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         loadWebContent()
 
@@ -36,64 +35,18 @@ class WhatsNewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-     // MARK: Check version
-    
-    static func checkVersionAgainstLastKnown() ->Bool   { //Check the actual version of the app that is loaded on the device.
-        
-        var displayWhatsNew: Bool
-        
-        let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
-        
-        if let lastKnownVersionData = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData
-            
-        {
-            
-            let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionData) as! Version
-            
-            println("Last known version was \(lastKnownVersion).")
-            
-            if (lastKnownVersion < currentAppVersion) {
-                
-                println("Cool, you have a new version!")
-                
-                displayWhatsNew = true
-                
-            } else {
-                
-                println("No, it's not a new version.")
-                
-                displayWhatsNew = false
-                
-            }
-            
-        } else {
-            
-            println("No idea what the last known version was, so show the alert.")
-            
-            displayWhatsNew = true
-            
-            
-        }
-        
-        return displayWhatsNew
     }
     
     
     // MARK: Alert actions
     
-    
     static func showWhatsNewFromHTMLAlert (num: Version, viewController: UIViewController, embedded:Bool)  {
         let whatsNewVC = WhatsNewController()
         
-        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "Would you like to see what is new in version \(num)?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "Would you like to see whats new?", preferredStyle: .Alert)
         
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
-            self.showWebPage(embedded) //Show the webpage
+            self.showWebPage(embedded)
             self.saveLatestVersionData(num)
             
         }
@@ -109,7 +62,6 @@ class WhatsNewController: UIViewController {
         alertController.addAction(NOKAction)
         
         viewController.presentViewController(alertController, animated: true) {
-            println("Showing alert.")
             
         }
         
@@ -123,27 +75,23 @@ class WhatsNewController: UIViewController {
     static func showWhatsNewFromStringAlert(num: Version, viewController: UIViewController)  {
         let whatsNewVC = WhatsNewController()
         
-        //// this helps format the text in case they decide not to include a string to display, but developer still wants to show the updated version number.
+      
         
-        if (infoString == nil) {
+        if (infoString == nil) {  //// this helps format the text in case they decide not to include a string to display, but developer still wants to show the updated version number.
             infoString = ""
         }
         
-        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "\(infoString!)", preferredStyle: .Alert) //optional looked weird in popup alert
+        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "\(infoString!)", preferredStyle: .Alert) //optional looked weird in popup alert, so since it can't be nil made it !
         
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             self.saveLatestVersionData(num)
         }
         
-        
         alertController.addAction(OKAction)
         
         viewController.presentViewController(alertController, animated: true) {
-            println("SHOW ALERT")
             
         }
-        
-    
         
     }
     
@@ -152,15 +100,12 @@ class WhatsNewController: UIViewController {
     // MARK: Display whats new
     
     static func displayFromHTMLIfNecessary(presentingViewController: UIViewController, embedded: Bool) {
-        //let whatsNewVC = WhatsNewController()
         
-        println("Attempting to display html version of what's new.")
-        
-        var weShouldDisplayWhatsNew = checkVersionAgainstLastKnown()
+        var weShouldDisplayWhatsNew = WhatsNewVersionCheck.checkVersionAgainstLastKnown()
         
         if weShouldDisplayWhatsNew {
             
-            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version //declared twice?
+            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
             
             showWhatsNewFromHTMLAlert(currentAppVersion, viewController: presentingViewController, embedded:embedded)
             
@@ -173,14 +118,11 @@ class WhatsNewController: UIViewController {
     
     static func displayFromStringIfNecessary(presentingViewController: UIViewController) {
         
-        println("display what's new from String")
-        
-        var weShouldDisplayWhatsNew = checkVersionAgainstLastKnown()
-        
+        var weShouldDisplayWhatsNew = WhatsNewVersionCheck.checkVersionAgainstLastKnown()
         
         if weShouldDisplayWhatsNew {
             
-            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version //declared twice?
+            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
             
             showWhatsNewFromStringAlert(currentAppVersion, viewController: presentingViewController)
             
@@ -195,17 +137,12 @@ class WhatsNewController: UIViewController {
     
     // MARK: Show webpage
     
-    
-    
-   static func showWebPage(embedded: Bool) {
-    let whatsNewVC = WhatsNewController()
+    static func showWebPage(embedded: Bool) {
 
         if embedded {
-            println("Bing, a webpage is embedded.")
-            whatsNewVC.changeViewToWhatsNewHTML()
+            changeViewToWhatsNewHTML()
             
         } else {
-            println("Bing, a webpage pops up.")
             UIApplication.sharedApplication().openURL(infoPageURL!)
     
         }
@@ -214,45 +151,43 @@ class WhatsNewController: UIViewController {
     static func saveLatestVersionData(ver: Version) {
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(ver), forKey: "WhatsNew_LastKnownVersion")
         
-        println("Saving last known version to disk")
-        
     }
     
     
     func loadWebContent() {
-
-        println("Attempting to load your web page..")
         
-        let url = NSURL(string: "http://www.infusionsoft.com")
+        let request = NSURLRequest(URL: WhatsNewController.infoPageURL!)
         
-        let request = NSURLRequest(URL: url!)
-    
-        newWebView?.loadRequest(request)
-        
+         newWebView?.loadRequest(request)
     }
     
     
     
-    func changeViewToWhatsNewHTML() {
-        //FIXME: WORKS BUT what happens if their storyboard isn't called Main?
-        let newStuff = UIStoryboard(name: "Main", bundle:nil).instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
+    static func changeViewToWhatsNewHTML() {
+        let storyString = self.storyboardString as! String
+        let newStuff = UIStoryboard(name: storyString, bundle:nil).instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.window?.rootViewController = newStuff
         
     }
     
-    
-    @IBAction func backToApp(sender: UIButton) {
-        //FIXME: WORKS BUT what happens if their storyboard isn't called Main?
-        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+    static func changeViewBackToRootView() {
+        let storyString = storyboardString as! String
+        let initialViewController = UIStoryboard(name: storyString, bundle:nil).instantiateInitialViewController() as! UIViewController
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
         
     }
     
+    
+    //MARK: Button mash section
+    
+    @IBAction func backButtonAction(sender: UIButton){
+        WhatsNewController.changeViewBackToRootView()
+    }
+
     @IBAction func doRefresh(AnyObject) {
         newWebView?.reload()
-        
     }
     
     @IBAction func goBack(AnyObject) {
@@ -263,9 +198,9 @@ class WhatsNewController: UIViewController {
         newWebView?.goForward()
     }
     
-    @IBAction func stop(AnyObject) {
-        newWebView?.stopLoading()
-    }
+//    @IBAction func stop(AnyObject) {
+//        newWebView?.stopLoading()
+//    }
     
     
 }
