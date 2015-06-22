@@ -72,7 +72,6 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-6r-v4f">
                                 <rect key="frame" x="0.0" y="76" width="600" height="519"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="531" id="4FU-Vt-rr2"/>
                                 </constraints>
@@ -84,20 +83,19 @@
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-Qj-Q8k">
                                 <rect key="frame" x="16" y="28" width="59" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Back to App Home Page"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Leq-3n-V2o"/>
                                     <constraint firstAttribute="width" constant="59" id="Ske-c1-kbs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="&lt;&lt;">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="&lt;&lt;"/>
                                 <connections>
                                     <action selector="backToApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Zr-qc-kOQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVP-8W-sRD">
                                 <rect key="frame" x="536" y="28" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Forward in Browser"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="95h-zi-N3J"/>
                                     <constraint firstAttribute="height" constant="40" id="UXr-ty-kmz"/>
@@ -112,6 +110,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7j-vY-JDh">
                                 <rect key="frame" x="488" y="30" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Refresh"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="LOk-XP-5Hd"/>
                                     <constraint firstAttribute="height" constant="40" id="zVQ-qw-8oe"/>
@@ -126,6 +125,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-0M-PUd">
                                 <rect key="frame" x="440" y="28" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Back in Browser"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="9xA-mY-RZx"/>
                                     <constraint firstAttribute="height" constant="40" id="lUH-cq-oAF"/>

@@ -22,13 +22,16 @@ class WhatsNewController: UIViewController {
     
     
     static var infoPageURL: NSURL?
-    static var infoString: NSString!
-    @IBOutlet weak var newWebView: UIWebView!
+    static var infoString: NSString?
+    @IBOutlet var newWebView: UIWebView?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        loadWebContent()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,8 +40,8 @@ class WhatsNewController: UIViewController {
     }
     
     
-     // MARK: Check version
     
+     // MARK: Check version
     
     static func checkVersionAgainstLastKnown() ->Bool   { //Check the actual version of the app that is loaded on the device.
         
@@ -91,8 +94,7 @@ class WhatsNewController: UIViewController {
         
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             self.showWebPage(embedded) //Show the webpage
-            
-            ///////UNCOMMENT AFTER TESTS COMPLETE **** whatsNewVC.saveLatestVersionData(num)
+            self.saveLatestVersionData(num)
             
         }
         
@@ -107,7 +109,7 @@ class WhatsNewController: UIViewController {
         alertController.addAction(NOKAction)
         
         viewController.presentViewController(alertController, animated: true) {
-            println("SHOW ALERT")
+            println("Showing alert.")
             
         }
         
@@ -121,17 +123,13 @@ class WhatsNewController: UIViewController {
     static func showWhatsNewFromStringAlert(num: Version, viewController: UIViewController)  {
         let whatsNewVC = WhatsNewController()
         
-        //// this helps format the string in case they decide not to include a string to display, but developer still wants to show the updated version number.
+        //// this helps format the text in case they decide not to include a string to display, but developer still wants to show the updated version number.
         
-        if (infoString == nil) { //TODO: maybe improve?
+        if (infoString == nil) {
             infoString = ""
         }
         
-        /////
-        
-        
-        
-        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "\(infoString)", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Updated to Version \(num)", message: "\(infoString!)", preferredStyle: .Alert) //optional looked weird in popup alert
         
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             self.saveLatestVersionData(num)
@@ -145,7 +143,7 @@ class WhatsNewController: UIViewController {
             
         }
         
-        
+    
         
     }
     
@@ -155,8 +153,6 @@ class WhatsNewController: UIViewController {
     
     static func displayFromHTMLIfNecessary(presentingViewController: UIViewController, embedded: Bool) {
         //let whatsNewVC = WhatsNewController()
-        
-        
         
         println("Attempting to display html version of what's new.")
         
@@ -204,12 +200,9 @@ class WhatsNewController: UIViewController {
    static func showWebPage(embedded: Bool) {
     let whatsNewVC = WhatsNewController()
 
-    
         if embedded {
             println("Bing, a webpage is embedded.")
             whatsNewVC.changeViewToWhatsNewHTML()
-            ////whatsNewVC.loadWebContent()
-
             
         } else {
             println("Bing, a webpage pops up.")
@@ -225,64 +218,53 @@ class WhatsNewController: UIViewController {
         
     }
     
-    // Go back to home page
-    @IBAction func backToApp(sender: UIButton) {
-     
-        println("Click back to app!")
-        
-        loadWebContent()  //DELETEME: this will get deleted but it's here for testing.
-        
-        
-        changeViewBackToRootController()
-        
-    }
     
     func loadWebContent() {
 
-        println("Load in that web page..")
+        println("Attempting to load your web page..")
         
         let url = NSURL(string: "http://www.infusionsoft.com")
-            
+        
         let request = NSURLRequest(URL: url!)
-        
-        newWebView.loadRequest(request)
-        
-        
+    
+        newWebView?.loadRequest(request)
         
     }
+    
+    
     
     func changeViewToWhatsNewHTML() {
-     
- //FIXME: would if their storyboard isn't called Main???
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var viewController = mainStoryboard.instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
-        UIApplication.sharedApplication().keyWindow!.rootViewController = viewController;
+        //FIXME: WORKS BUT what happens if their storyboard isn't called Main?
+        let newStuff = UIStoryboard(name: "Main", bundle:nil).instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = newStuff
         
     }
-  
-    func changeViewBackToRootController() {
+    
+    
+    @IBAction func backToApp(sender: UIButton) {
+        //FIXME: WORKS BUT what happens if their storyboard isn't called Main?
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+        let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
         
-        self.navigationController?.popToRootViewControllerAnimated(true)
-        return
-    
     }
-    
-    
     
     @IBAction func doRefresh(AnyObject) {
-        newWebView.reload()
+        newWebView?.reload()
+        
     }
     
     @IBAction func goBack(AnyObject) {
-        newWebView.goBack()
+        newWebView?.goBack()
     }
     
     @IBAction func goForward(AnyObject) {
-        newWebView.goForward()
+        newWebView?.goForward()
     }
     
     @IBAction func stop(AnyObject) {
-        newWebView.stopLoading()
+        newWebView?.stopLoading()
     }
     
     

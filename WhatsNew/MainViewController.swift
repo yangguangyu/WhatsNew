@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
         //Option to post alert via an NSString
 //        WhatsNewController.infoString = "-Improved Pug tail control. \n-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
 //        WhatsNewController.displayFromStringIfNecessary(self)
-        
+//        
         
         
     }
