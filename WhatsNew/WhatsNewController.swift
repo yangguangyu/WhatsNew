@@ -122,10 +122,29 @@ class WhatsNewController: UIViewController {
     @IBAction func goForward(AnyObject) {
         whatsNewWebView?.goForward()
     }
-    
-    
-    
-    
+}
+    //MARK: Version Checking
+    class WhatsNewVersionCheck  {
+        
+        static func checkVersionAgainstLastKnown() ->Bool   {
+            var displayWhatsNew: Bool
+            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
+            if let lastKnownVersionStored = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData { //stored value
+                let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionStored) as! Version
+                if (lastKnownVersion < currentAppVersion) {
+                    displayWhatsNew = true
+                } else {
+                    displayWhatsNew = false
+                }
+            } else {  //no stored value
+                displayWhatsNew = true
+            }
+            return displayWhatsNew
+        }
+        
+        static func saveLatestVersionData(ver: Version) {
+            NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(ver), forKey: "WhatsNew_LastKnownVersion")
+        }
     
 }
     
