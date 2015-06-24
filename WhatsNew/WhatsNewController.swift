@@ -14,7 +14,7 @@ class WhatsNewController: UIViewController {
     //MARK: initialization
     static var infoPageURL: NSURL?
     static var infoString: NSString?
-    static var storyboardID: NSString?
+    static var storyboardFileName: NSString?
     @IBOutlet var whatsNewWebView: UIWebView?
     
     override func viewDidLoad() {
@@ -92,15 +92,15 @@ class WhatsNewController: UIViewController {
     }
     
     static func changeViewToWhatsNewHTML() {
-        let storyString = self.storyboardID as! String
-        let newStuff = UIStoryboard(name: storyString, bundle:nil).instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
+        let storyName = self.storyboardFileName as! String
+        let newStuff = UIStoryboard(name: storyName, bundle:nil).instantiateViewControllerWithIdentifier("WhatsNewViewController") as! UIViewController
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.window?.rootViewController = newStuff
     }
     
     static func changeViewBackToRootView() {
-        let storyString = storyboardID as! String
-        let initialViewController = UIStoryboard(name: storyString, bundle:nil).instantiateInitialViewController() as! UIViewController
+        let storyName = storyboardFileName as! String
+        let initialViewController = UIStoryboard(name: storyName, bundle:nil).instantiateInitialViewController() as! UIViewController
         let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
     }
