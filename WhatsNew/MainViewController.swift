@@ -16,16 +16,17 @@ class MainViewController: UIViewController {
         // CHOOSE THIS
         //-----Option to post alert via a NSURL
 
-        WhatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com")! //customize url
-        WhatsNewController.storyboardFileName = NSString(string: "WhatsNew") //only change for custom storyboard
-        WhatsNewController.displayFromHTMLIfNecessary(self, embedded:true) //embed content or just use safari popup?
+        let whatsNewController = WhatsNewController()
+        whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //customize url
+        whatsNewController.displayFromHTMLIfNecessary(self, embedded:true)
     
         
         // OR CHOOSE THIS
         //-----Option to post alert via an NSString
 
-//      WhatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
-//      WhatsNewController.displayFromStringIfNecessary(self)
+//        let whatsNewController = WhatsNewController()
+//        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
+//        whatsNewController.displayFromStringIfNecessary(self)
     
         
         
