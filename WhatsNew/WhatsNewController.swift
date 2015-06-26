@@ -11,13 +11,13 @@ typealias Version = String
 
 class WhatsNewController: UIViewController {
     
-    //MARK: initialization
+    //MARK: Initialization
     static var infoPageURL: NSURL?
     static var infoString: NSString?
     static var storyboardFileName: NSString?
     @IBOutlet var whatsNewWebView: UIWebView?
     
-    //MARK: viewDids
+    //MARK: View Dids
     override func viewDidLoad() {
         super.viewDidLoad()
         loadWebContent()
