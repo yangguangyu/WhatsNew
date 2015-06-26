@@ -27,7 +27,7 @@ Overview\
 \
 \pard\pardeftab720
 \cf2 \cb1 \expnd0\expndtw0\kerning0
-The What's New version notification system is a simple way for apps to add brief notification alerts when a new version of their app is installed. The first time What's New detects a new version has launched, the user is presented with a brief description of brand new features. The app developer can choose to either present this information via a live webpage, or from a simple string included in their app. What's New is coded in Swift and can also be used in Swift-bridged Objective C projects.\
+The What's New version notification system is a simple way for apps to add quick alerts when a new version of their app is installed. The first time What's New detects that a new version has launched, the user is presented with a brief description of brand new features. The app developer can choose to either present this information via a live webpage, or from a simple string included in their app. What's New is coded in Swift and can also be used in Swift-bridged Objective C projects.\
 \pard\pardeftab720
 
 \b\fs72 \cf2 \expnd0\expndtw0\kerning0
@@ -45,9 +45,8 @@ If porting WhatsNew SIMPLE ALERT code into an existing Objective C project that 
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls1\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
-Select all of the Swift code and paste into your bridged .swift file.\
-\pard\tx220\tx720\pardeftab720\li720\fi-720
-\ls1\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
 Add @objc to the primary class files you just pasted.\
 \ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
@@ -71,9 +70,8 @@ If porting WhatsNew WEBPAGE POP-OUT ALERT code into an existing Objective C proj
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls2\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
-Select all of the Swift code and paste into your bridged .swift file.\
-\pard\tx220\tx720\pardeftab720\li720\fi-720
-\ls2\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
 Add @objc to the primary class files you just pasted.\
 \ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
@@ -99,8 +97,7 @@ If porting WhatsNew WEBPAGE POP-OUT or EMBEDDED ALERT code into an existing Swif
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls3\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
 Copy the WhatsNew.storyboard and WhatsNewController.swift file into your project.\
-\pard\tx220\tx720\pardeftab720\li720\fi-720
-\ls3\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
 \pard\pardeftab720
 
@@ -124,8 +121,7 @@ If porting WhatsNew SIMPLE ALERT code into an existing Swift project...
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls4\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
 Copy the WhatsNewController.swift file into your project.\
-\pard\tx220\tx720\pardeftab720\li720\fi-720
-\ls4\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
 \pard\pardeftab720
 
@@ -158,23 +154,22 @@ DETAILS\
 
 \b0\fs32 \cf4 \cb5 \expnd0\expndtw0\kerning0
 \
-\pard\pardeftab720
-
-\b\fs72 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\pard\tx560\pardeftab720
+\cf4 \cb1 \expnd0\expndtw0\kerning0
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
-\ls5\ilvl0
-\b0\fs32 \cf4 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Use displayFromHTMLIfNecessary if you would like to present a 'What's New' webpage from a URL.\
-\pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls5\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Use displayFromStringIfNecessary if you would like to present a simple detailed 'What's New' popup alert.\
+For displayFromHTMLIfNecessary you can either pop out a Safari window by using embedded:false.  Or you can embed the webpage inside a viewController with embedded:true.  Either option requires that you designate an infoPageURL which is the webpage with all of your version details. \
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-For displayFromHTMLIfNecessary you can either popup a Safari window with embedded:false or embed the webpage inside a viewController with embedded:true. Either option requires that you designate an infoPageURL which is the webpage with all of your version information. You do not have to change the "WhatsNew" storyboardFileName unless you want to use your own custom storyboard instead of importing the "WhatsNew.storyboard". If you do decide to create your own custom ViewController, it should be titled "WhatsNewViewController".\
+You do not have to change the "WhatsNew" storyboardFileName unless you want to use your own custom Storyboard instead of the "WhatsNew.storyboard" that is provided.  If you use your own custom ViewController, it should be titled "WhatsNewViewController".  Alternatively you can rename "WhatsNewViewController" in the swift code provided as needed.\
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-For displayFromStringIfNecessary you can format a string to display inside of a simple alert view. If you decide not to include a string to display, it will simply alert the user that a new version was installed.\
+For simple text alerts, edit the "infoString" which will provide the user with details regarding your new app's version. If you decide not to include an "infoString", What's New will alert the user that a new version has been installed, without any details.\
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Alerts for each version will only happen once when the app is launched.\
+Alerts for each version will only happen once, the first time the app is launched.\
+\pard\tx560\pardeftab720
+\cf4 \expnd0\expndtw0\kerning0
+\
+\
 \pard\pardeftab720
 \cf4 \cb5 \expnd0\expndtw0\kerning0
 \
