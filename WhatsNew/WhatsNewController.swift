@@ -119,9 +119,9 @@ class WhatsNewController: UIViewController {
 
 extension UIApplication {
     
-    static var currentVersion: String {
+    static var currentVersion: Version {
         
-        return NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
+        return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! Version //TODO: ask if this is okay?
     }
    
     
