@@ -32,14 +32,18 @@ class WhatsNewController: UIViewController {
     //MARK: Display Alerts
      func displayFromHTMLIfNecessary (presentingViewController: UIViewController, embedded: Bool) {
         if UIApplication.isNewVersion {
-            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
-            presentHTMLAlertOptions(currentAppVersion, viewController: presentingViewController, embedded:embedded)
+            let currentAppVersion: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+            presentHTMLAlertOptions("\(currentAppVersion)", viewController: presentingViewController, embedded:embedded)
         }
     }
+
+
+    
+    
      func displayFromStringIfNecessary (presentingViewController: UIViewController) {
           if UIApplication.isNewVersion {
-            let currentAppVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
-            presentStringAlert(currentAppVersion, viewController: presentingViewController)
+            let currentAppVersion: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+            presentStringAlert("\(currentAppVersion)", viewController: presentingViewController)
         }
     }
     
@@ -119,21 +123,17 @@ extension UIApplication {
         
         return NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! Version
     }
+   
     
     static var isNewVersion: Bool {
-        
-        var displayWhatsNew: Bool
-        if let lastKnownVersionStored = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData { //stored value
-            let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionStored) as! Version
-            if (lastKnownVersion < currentVersion) {
-                displayWhatsNew = true
-            } else {
-                displayWhatsNew = false
-            }
-        } else {  //no stored value
-            displayWhatsNew = true
-        }
-        return displayWhatsNew
+        var isNew: Bool = true
+        if let lastKnownVersionData = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
+            if let lastKnownVersionObject: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionData) {
+                if ("\(lastKnownVersionObject)" < currentVersion) {
+                    isNew = true
+                } else {
+                    isNew = false }}}
+        return isNew
     }
     
     static func persistVersion () {
@@ -175,4 +175,21 @@ return displayWhatsNew
 
 */
 
+/*
+static var isNewVersionBREAK: Bool {
+
+var displayWhatsNew: Bool
+if let lastKnownVersionStored = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData { //stored value
+let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionStored) as! Version
+if (lastKnownVersion < currentVersion) {
+displayWhatsNew = true
+} else {
+displayWhatsNew = false
+}
+} else {  //no stored value
+displayWhatsNew = true
+}
+return displayWhatsNew
+}
+*/
 
