@@ -16,17 +16,23 @@ class MainViewController: UIViewController {
         // CHOOSE THIS
         //-----Option to post alert via a NSURL
 
-        let whatsNewController = WhatsNewController()
+       let whatsNewController = WhatsNewController()
         whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //customize url
-        whatsNewController.displayFromHTMLIfNecessary(self, embedded:true)
-    
+        
+        whatsNewController.appView = (self)
+        
+        whatsNewController.displayFromHTMLIfNecessary(true)
+
+        
         
         // OR CHOOSE THIS
         //-----Option to post alert via an NSString
-
+//
 //        let whatsNewController = WhatsNewController()
 //        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
-//        whatsNewController.displayFromStringIfNecessary(self)
+//        whatsNewController.appView = (self)
+//        whatsNewController.displayFromStringIfNecessary()
+//        
     
         
         
