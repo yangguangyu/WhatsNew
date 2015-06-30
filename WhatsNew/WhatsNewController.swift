@@ -104,7 +104,7 @@ class WhatsNewController: UIViewController {
         
         if embedded {
             if let viewConfirmed = appView {
-                viewConfirmed.presentViewController(whatsNewView, animated: true, completion: nil) //after this the strings are wiped
+                viewConfirmed.presentViewController(whatsNewView, animated: true, completion: nil) //FIXME: after this the strings are wiped
             }
         } else {
             if let urlConfirmed = infoPageURL {
