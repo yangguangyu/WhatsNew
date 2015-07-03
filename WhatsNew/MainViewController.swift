@@ -8,8 +8,21 @@
 
 import UIKit
 
+
+
+
 class MainViewController: UIViewController {
  
+    //MARK: View Dids
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    
     override func viewDidAppear(animated: Bool) {
         
         

@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
+        <!--Main View Controller-->
         <scene sceneID="Pjn-Ll-aPR">
             <objects>
-                <viewController storyboardIdentifier="Main" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QPu-i8-KbV" customClass="MainViewController" customModule="WhatsNew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WhatsNew" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QPu-i8-KbV" customClass="MainViewController" customModule="WhatsNew" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ks2-Xm-GRU"/>
                         <viewControllerLayoutGuide type="bottom" id="LzG-0D-4gd"/>
