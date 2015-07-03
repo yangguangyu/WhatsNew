@@ -18,7 +18,7 @@ class WhatsNewController: UIViewController {
     var appViewController: UIViewController?
     @IBOutlet var whatsNewWebView: UIWebView?
     
-    //MARK: View Dids
+    //MARK: ViewDids
     override func viewDidLoad() {
         super.viewDidLoad()
         loadWebContent()
@@ -28,16 +28,16 @@ class WhatsNewController: UIViewController {
     }
     
     //MARK: Simple String Alert
-    func displayFromStringIfNecessary () { //format based on version and whether or not string present
+    func displayFromStringIfNecessary () { //what's new alert if new version and based on simple string
         if UIApplication.isNewVersion {
             if let formattedString = infoString {
-                stringAlert(formattedString)
+                showString(formattedString)
             } else { //no custom text
-                stringAlert("")
+                showString("")
             }
         }
     }
-    func stringAlert(messageText: NSString) { //show what's new string
+    func showString(messageText: NSString) { //show string
         let alertController = UIAlertController (title: "Updated to Version \(UIApplication.currentVersion)", message: "\(messageText)", preferredStyle: .Alert)
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             UIApplication.persistVersion()
@@ -49,11 +49,11 @@ class WhatsNewController: UIViewController {
     }
     
     //MARK: HTML/WebView Alerts
-    func displayFromHTMLIfNecessary (#embedded:Bool) {  //prepare popup with yes no option to view webpage alert
+    func displayFromHTMLIfNecessary (#embedded:Bool) {  //what's new alert if new version and based on custom url
         if UIApplication.isNewVersion {
             let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion)", message: "Would you like to see what's new?", preferredStyle: .Alert)
             let OKAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
-                self.showWebPage(embedded:true) //show webpage
+                self.showWebPage(embedded:embedded) //show webpage
                 UIApplication.persistVersion()
             }
             alertController.addAction(OKAction)
@@ -66,7 +66,7 @@ class WhatsNewController: UIViewController {
             }
         }
     }
-    func showWebPage (#embedded:Bool) { //show what's new webpage, either in safari or embedded webview
+    func showWebPage (#embedded:Bool) { //show webpage
         if embedded {
             if let viewConfirmed = appViewController {
                 var sb = UIStoryboard(name: "WhatsNew", bundle: nil)
@@ -97,7 +97,7 @@ class WhatsNewController: UIViewController {
     @IBAction func doRefresh(AnyObject) {whatsNewWebView?.reload()}
     @IBAction func goBack(AnyObject) {whatsNewWebView?.goBack()}
     @IBAction func goForward(AnyObject) {whatsNewWebView?.goForward()}
-
+    
 }
 
 
@@ -124,7 +124,7 @@ extension UIApplication {
         }
         return isNew
     }
-
+    
     static func persistVersion () { //store current version
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(UIApplication.currentVersion), forKey: "WhatsNew_LastKnownVersion")
     }

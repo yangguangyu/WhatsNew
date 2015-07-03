@@ -1,7 +1,10 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1331\cocoasubrtf120
-{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Consolas;}
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Consolas;\f2\fnil\fcharset0 Menlo-Regular;
+}
 {\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red50\green98\blue178;\red100\green100\blue100;
-\red225\green225\blue225;\red245\green245\blue245;}
+\red225\green225\blue225;\red245\green245\blue245;\red77\green0\blue158;\red46\green13\blue110;\red92\green38\blue153;
+\red180\green0\blue98;\red186\green0\blue17;\red29\green133\blue25;\red48\green111\blue121;\red68\green137\blue147;
+\red32\green60\blue63;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
@@ -46,17 +49,22 @@ If porting WhatsNew SIMPLE ALERT code into an existing Objective C project that 
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls1\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
 Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file.\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
-Add @objc to the primary class files you just pasted.\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\ls1\ilvl0\kerning1\expnd0\expndtw0    2   \expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
  \
-WhatsNewController.infoString = [NSString stringWithFormat:@"-First feature. \\n-Second feature. \\n-Third feature."];\
-[WhatsNewController displayFromStringIfNecessary:self];\
-\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0     	\cf7 WhatsNewController\cf0  *whatsNew = [[\cf7 WhatsNewController\cf0  \cf8 alloc\cf0 ]\cf8 init\cf0 ];\
+    	whatsNew.\cf9 appViewController\cf0  = \cf10 self\cf0 ;\
+    	whatsNew.\cf9 infoString\cf0  = [\cf7 NSString\cf0  \cf8 stringWithFormat\cf0 :\cf11 @"-Feature one. \\n-Feature two. \\n-Feature three."\cf0 ]; \cf12 //edit text\cf0 \
+    	[whatsNew \cf8 displayFromStringIfNecessary\cf0 ];
+\f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720
+\cf4 \
 \
 \pard\pardeftab720
 
@@ -65,24 +73,30 @@ WhatsNewController.infoString = [NSString stringWithFormat:@"-First feature. \\n
 \pard\pardeftab720
 
 \b \cf2 \cb1 \expnd0\expndtw0\kerning0
-If porting WhatsNew WEBPAGE POP-OUT ALERT code into an existing Objective C project that has Swift bridging...
+If porting WhatsNew WEBPAGE POP-OUT ALERT or EMBEDDED ALERT code into an existing Objective C project that has Swift bridging...
 \b0 \expnd0\expndtw0\kerning0
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls2\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
-Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file.\
-\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
-Add @objc to the primary class files you just pasted.\
+Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}D\expnd0\expndtw0\kerning0
+rag the WhatsNew.storyboard into your project.\
 \ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \
-WhatsNewController.infoPageURL = [NSURL URLWithString:@"http://www.infusionsoft.com"];\
-WhatsNewController.storyboardFileName = @"WhatsNew";\
-[WhatsNewController displayFromHTMLIfNecessary:self embedded:false];\
-\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0     	\cf7 WhatsNewController\cf0  *whatsNew = [[\cf7 WhatsNewController\cf0  \cf8 alloc\cf0 ]\cf8 init\cf0 ];\
+    	whatsNew.\cf9 infoPageURL\cf0  = [\cf7 NSURL\cf0  \cf8 URLWithString\cf0 :\cf11 @"http://www.infusionsoft.com"\cf0 ]; \cf12 //edit url\cf0 \
+    	whatsNew.\cf9 appViewController\cf0  = \cf10 self\cf0 ;\
+    	[whatsNew \cf8 displayFromHTMLIfNecessaryWithEmbedded\cf0 :\cf10 true\cf0 ]; \cf12 //edit true or false
+\f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720
+\cf4 \
 \
 \pard\pardeftab720
 
@@ -103,10 +117,16 @@ Modify and paste this into your ViewWillAppear section.\
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \
-WhatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com")!\
-WhatsNewController.storyboardFileName = NSString(string: "WhatsNew")\
-WhatsNewController.displayFromHTMLIfNecessary(self, embedded:true)\
-\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0         \cf10 let\cf0  whatsNewController = \cf13 WhatsNewController\cf0 ()\
+        whatsNewController.\cf14 appViewController\cf0  = (\cf10 self\cf0 )\
+        whatsNewController.\cf14 infoPageURL\cf0  = \cf7 NSURL\cf0 (string: \cf11 "http://infusionsoft.com"\cf0 ) \cf12 //edit url\
+\cf0         whatsNewController.\cf15 displayFromHTMLIfNecessary\cf0 (embedded: \cf10 true\cf0 ) \cf12 //edit true or false
+\f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720
+\cf4 \
 \
 \pard\pardeftab720
 
@@ -120,30 +140,24 @@ If porting WhatsNew SIMPLE ALERT code into an existing Swift project...
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls4\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
-Copy the WhatsNewController.swift file into your project.\
+Drag the WhatsNewController.swift file into your project.\
 \ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
 Modify and paste this into your ViewWillAppear section.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \
-WhatsNewController.infoString = "-First feature. \\n-Second feature. \\n-Third feature."\
-WhatsNewController.displayFromStringIfNecessary(self)\
-\
-\
+\pard\tx674\pardeftab674\pardirnatural
+
+\f2 \cf10 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 		let\cf0  whatsNewController = \cf13 WhatsNewController\cf0 ()\
+        whatsNewController.\cf14 appViewController\cf0  = (\cf10 self\cf0 )\
+        whatsNewController.\cf14 infoString\cf0  = \cf11 "-First feature. \\n-Second feature. \\n-Third feature"\cf0  \cf12 //edit text\
+\cf0         whatsNewController.\cf15 displayFromStringIfNecessary\cf0 ()
+\f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
 \pard\pardeftab720
 
-\f0\fs32 \cf4 \cb5 \expnd0\expndtw0\kerning0
-\
-\pard\pardeftab720
-
-\b \cf2 \cb1 \expnd0\expndtw0\kerning0
-If porting WhatsNew WEBPAGE EMBEDDED ALERT code into an existing Objective C project that has Swift bridging...
-\b0 \expnd0\expndtw0\kerning0
-\
-\pard\pardeftab720
-\cf4 \expnd0\expndtw0\kerning0
-** (NOT CURRENTLY SUPPORTED: AppDelegate conflicts)**\
+\f0\fs32 \cf4 \cb1 \expnd0\expndtw0\kerning0
 \
 \pard\pardeftab720
 
@@ -159,11 +173,9 @@ DETAILS\
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls5\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-For displayFromHTMLIfNecessary you can either pop out a Safari window by using embedded:false.  Or you can embed the webpage inside a viewController with embedded:true.  Either option requires that you designate an infoPageURL which is the webpage with all of your version details. \
+For displayFromHTMLIfNecessary you can either pop out a Safari window by using embedded:false,  or you can embed the webpage inside our custom ViewController with embedded:true.  Either option requires that you designate an infoPageURL which is the webpage containing all of your version details. \
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-You do not have to change the "WhatsNew" storyboardFileName unless you want to use your own custom Storyboard instead of the "WhatsNew.storyboard" that is provided.  If you use your own custom ViewController, it should be titled "WhatsNewViewController".  Alternatively you can rename "WhatsNewViewController" in the swift code provided as needed.\
-\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-For simple text alerts, edit the "infoString" which will provide the user with details regarding your new app's version. If you decide not to include an "infoString", What's New will alert the user that a new version has been installed, without any details.\
+For simple text alerts, edit the "infoString" which will provide the user with details regarding your new app's version. If you decide not to include an "infoString", the user will be alerted that a new version has been installed, without any details.\
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
 Alerts for each version will only happen once, the first time the app is launched.\
 \pard\tx560\pardeftab720
