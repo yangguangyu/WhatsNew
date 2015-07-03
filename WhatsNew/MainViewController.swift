@@ -17,20 +17,17 @@ class MainViewController: UIViewController {
         //-----Option to post alert via a NSURL
 //
 //       let whatsNewController = WhatsNewController()
-//        whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //customize url
-//        
 //        whatsNewController.appView = (self)
-//        
-//        whatsNewController.displayFromHTMLIfNecessary(true)
+//        whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //edit url
+//        whatsNewController.displayFromHTMLIfNecessary(embedded: true) //edit true or false
 
         
         
         // OR CHOOSE THIS
         //-----Option to post alert via an NSString
-
         let whatsNewController = WhatsNewController()
-        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri."
-        whatsNewController.appView = (self)
+        whatsNewController.appViewController = (self)
+        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri." //edit text
         whatsNewController.displayFromStringIfNecessary()
         
     
