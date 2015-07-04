@@ -21,6 +21,9 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //    override func prefersStatusBarHidden() -> Bool {
+    //        return true
+    //    }
     
     
     override func viewDidAppear(animated: Bool) {
@@ -28,20 +31,21 @@ class MainViewController: UIViewController {
         
         // CHOOSE THIS
         //-----Option to post alert via a NSURL
-//
-       let whatsNewController = WhatsNewController()
+        
+        let whatsNewController = WhatsNewController()
         whatsNewController.appViewController = (self)
         whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //edit url
-        whatsNewController.displayFromHTMLIfNecessary(embedded: false) //edit true or false
+        whatsNewController.displayFromHTMLIfNecessary(embedded: true) //edit true or false
 
         
         
         // OR CHOOSE THIS
         //-----Option to post alert via an NSString
-//        let whatsNewController = WhatsNewController()
-//        whatsNewController.appViewController = (self)
-//        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri." //edit text
-//        whatsNewController.displayFromStringIfNecessary()
+
+        //        let whatsNewController = WhatsNewController()
+        //        whatsNewController.appViewController = (self)
+        //        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri." //edit text
+        //        whatsNewController.displayFromStringIfNecessary()
         
     
         

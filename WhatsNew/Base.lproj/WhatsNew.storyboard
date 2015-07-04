@@ -74,7 +74,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-6r-v4f">
-                                <rect key="frame" x="0.0" y="52" width="600" height="543"/>
+                                <rect key="frame" x="0.0" y="40" width="600" height="560"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="531" id="4FU-Vt-rr2"/>
                                 </constraints>
@@ -84,77 +85,91 @@
                                     </mask>
                                 </variation>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-Qj-Q8k">
-                                <rect key="frame" x="16" y="20" width="59" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-Qj-Q8k">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Back to App Home Page"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Leq-3n-V2o"/>
-                                    <constraint firstAttribute="width" constant="59" id="Ske-c1-kbs"/>
+                                    <constraint firstAttribute="height" constant="40" id="Leq-3n-V2o"/>
+                                    <constraint firstAttribute="width" constant="40" id="Ske-c1-kbs"/>
                                 </constraints>
-                                <state key="normal" title="&lt;&lt;"/>
+                                <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="46"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="14" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="backHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="INX-7i-0on"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVP-8W-sRD">
-                                <rect key="frame" x="536" y="20" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVP-8W-sRD">
+                                <rect key="frame" x="552" y="0.0" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Forward in Browser"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="95h-zi-N3J"/>
-                                    <constraint firstAttribute="height" constant="30" id="UXr-ty-kmz"/>
+                                    <constraint firstAttribute="height" constant="40" id="UXr-ty-kmz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="&gt;"/>
+                                <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="27"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="→">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="goForward:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8cH-PF-kaG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7j-vY-JDh">
-                                <rect key="frame" x="488" y="22" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7j-vY-JDh">
+                                <rect key="frame" x="512" y="0.0" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Refresh"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="LOk-XP-5Hd"/>
-                                    <constraint firstAttribute="height" constant="30" id="zVQ-qw-8oe"/>
+                                    <constraint firstAttribute="height" constant="40" id="zVQ-qw-8oe"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="↻">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="doRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mPz-Kv-Did"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-0M-PUd">
-                                <rect key="frame" x="440" y="20" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-0M-PUd">
+                                <rect key="frame" x="472" y="0.0" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Back in Browser"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="9xA-mY-RZx"/>
-                                    <constraint firstAttribute="height" constant="30" id="lUH-cq-oAF"/>
+                                    <constraint firstAttribute="height" constant="40" id="lUH-cq-oAF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="&lt;"/>
+                                <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="27"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="←">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="goBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkq-8e-6wT"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="U9c-Qj-Q8k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="13a-Bz-6Fs"/>
+                            <constraint firstItem="U9c-Qj-Q8k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="13a-Bz-6Fs"/>
+                            <constraint firstItem="qh7-6r-v4f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="1Xz-Ef-hR6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qh7-6r-v4f" secondAttribute="trailing" constant="-16" id="4ZU-TD-gfS"/>
                             <constraint firstItem="U9c-Qj-Q8k" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AMg-6f-1zA"/>
-                            <constraint firstItem="qh7-6r-v4f" firstAttribute="top" secondItem="KVP-8W-sRD" secondAttribute="bottom" constant="2" id="Cvh-Xr-U18"/>
-                            <constraint firstItem="KVP-8W-sRD" firstAttribute="leading" secondItem="o7j-vY-JDh" secondAttribute="trailing" constant="8" id="DaJ-j9-OLT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qh7-6r-v4f" secondAttribute="trailing" constant="-16" id="Hcn-Y5-U96"/>
-                            <constraint firstItem="o7j-vY-JDh" firstAttribute="leading" secondItem="pJN-0M-PUd" secondAttribute="trailing" constant="8" id="Xgw-yw-NBK"/>
+                            <constraint firstItem="KVP-8W-sRD" firstAttribute="leading" secondItem="o7j-vY-JDh" secondAttribute="trailing" id="DaJ-j9-OLT"/>
+                            <constraint firstItem="qh7-6r-v4f" firstAttribute="top" secondItem="pJN-0M-PUd" secondAttribute="bottom" id="JVc-tC-1H8"/>
+                            <constraint firstItem="qh7-6r-v4f" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="WmN-Yi-YBc"/>
+                            <constraint firstItem="o7j-vY-JDh" firstAttribute="leading" secondItem="pJN-0M-PUd" secondAttribute="trailing" id="Xgw-yw-NBK"/>
                             <constraint firstItem="pJN-0M-PUd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Yvd-gB-33C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KVP-8W-sRD" secondAttribute="trailing" constant="8" id="cl0-il-wDA"/>
-                            <constraint firstItem="o7j-vY-JDh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="2" id="dLk-Jb-dGL"/>
-                            <constraint firstItem="qh7-6r-v4f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="lZ8-Au-a8L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KVP-8W-sRD" secondAttribute="trailing" constant="-8" id="cl0-il-wDA"/>
+                            <constraint firstItem="o7j-vY-JDh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dLk-Jb-dGL"/>
                             <constraint firstItem="KVP-8W-sRD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uYh-y8-lwp"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="qh7-6r-v4f" secondAttribute="bottom" constant="5" id="xtW-AY-klV"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="whatsNewWebView" destination="qh7-6r-v4f" id="5sd-2o-Nvl"/>
                     </connections>

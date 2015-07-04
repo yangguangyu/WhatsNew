@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Infusionsoft. All rights reserved.
 //
 
-
 import UIKit
 typealias Version = String
+
 
 class WhatsNewController: UIViewController {
     
@@ -21,18 +21,24 @@ class WhatsNewController: UIViewController {
     //MARK: ViewDids
     override func viewDidLoad() {
         super.viewDidLoad()
+        beautify()
         loadWebContent()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    
     
     //MARK: Simple String Alert
-    func displayFromStringIfNecessary () { //what's new alert if new version and based on simple string
+    func displayFromStringIfNecessary () { //what's new alert based on simple string
         if UIApplication.isNewVersion {
-            if let formattedString = infoString {
-                showString(formattedString)
-            } else { //no custom text
+            if let confirmedString = infoString {
+                showString(confirmedString)
+            } else {
                 showString("")
             }
         }
@@ -43,17 +49,17 @@ class WhatsNewController: UIViewController {
             UIApplication.persistVersion()
         }
         alertController.addAction(OKAction)
-        if let viewConfirmed = appViewController {
-            viewConfirmed.presentViewController(alertController, animated: true, completion: nil)
+        if let confirmedView = appViewController {
+            confirmedView.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
     //MARK: HTML/WebView Alerts
-    func displayFromHTMLIfNecessary (#embedded:Bool) {  //what's new alert if new version and based on custom url
+    func displayFromHTMLIfNecessary (#embedded:Bool) {  //what's new alert based on custom url
         if UIApplication.isNewVersion {
             let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion)", message: "Would you like to see what's new?", preferredStyle: .Alert)
             let OKAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
-                self.showWebPage(embedded:embedded) //show webpage
+                self.showWebPage(embedded:embedded)
                 UIApplication.persistVersion()
             }
             alertController.addAction(OKAction)
@@ -66,17 +72,18 @@ class WhatsNewController: UIViewController {
             }
         }
     }
+    func beautify(){
+        view.backgroundColor = UIColor.darkGrayColor() //set to custom desired colors 
+        //TODO: add text uicolors as well?
+    }
     func showWebPage (#embedded:Bool) { //show webpage
         if embedded {
             if let viewConfirmed = appViewController {
                 var sb = UIStoryboard(name: "WhatsNew", bundle: nil)
-                
                 if let vc = sb.instantiateViewControllerWithIdentifier("WhatsNewViewController") as? WhatsNewController {
-                    vc.infoPageURL = infoPageURL //pass the nsurl to new view
-                    vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical //change page flip animation as desired
+                    vc.infoPageURL = infoPageURL //pass the nsurl to the new view
+                    vc.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal //change page flip animation as desired
                     viewConfirmed.presentViewController(vc, animated: true, completion: nil)
-                } else {
-                    println("derp. no storyboard content")
                 }
             }
         } else {
@@ -86,8 +93,8 @@ class WhatsNewController: UIViewController {
         }
     }
     func loadWebContent() { //reload webpage
-        if let urlConfirmed = infoPageURL {
-            let request = NSURLRequest (URL: urlConfirmed)
+        if let confirmedURL = infoPageURL {
+            let request = NSURLRequest (URL: confirmedURL)
             whatsNewWebView?.loadRequest(request)
         }
     }
@@ -100,7 +107,6 @@ class WhatsNewController: UIViewController {
     
 }
 
-
 //MARK: UIApplication extensions
 extension UIApplication {
     static var currentVersion: Version { //check current version
@@ -110,23 +116,20 @@ extension UIApplication {
             return "0.0"
         }
     }
-    
     static var isNewVersion: Bool { //check if it's a new version
-        var isNew: Bool = true
-        if let lastKnownVersionData = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
-            if let lastKnownVersionObject: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(lastKnownVersionData) {
-                if ("\(lastKnownVersionObject)" < currentVersion) {
-                    isNew = true
+        var new: Bool = true
+        if let userData = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
+            if let lastKnownVersion: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(userData) {
+                if ("\(lastKnownVersion)" < currentVersion) {
+                    new = true
                 } else {
-                    isNew = false
+                    new = false
                 }
             }
         }
-        return isNew
+        return new
     }
-    
     static func persistVersion () { //store current version
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(UIApplication.currentVersion), forKey: "WhatsNew_LastKnownVersion")
     }
 }
-
