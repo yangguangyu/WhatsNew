@@ -75,7 +75,7 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-6r-v4f">
                                 <rect key="frame" x="0.0" y="40" width="600" height="560"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="531" id="4FU-Vt-rr2"/>
                                 </constraints>
@@ -92,9 +92,10 @@
                                     <constraint firstAttribute="height" constant="40" id="Leq-3n-V2o"/>
                                     <constraint firstAttribute="width" constant="40" id="Ske-c1-kbs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="46"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="14" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="&lt;">
+                                <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="23" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="X">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -109,6 +110,7 @@
                                     <constraint firstAttribute="height" constant="40" id="UXr-ty-kmz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="27"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="→">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,6 +127,7 @@
                                     <constraint firstAttribute="height" constant="40" id="zVQ-qw-8oe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="↻">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +145,7 @@
                                     <constraint firstAttribute="height" constant="40" id="lUH-cq-oAF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="27"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="13" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="←">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,7 +155,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.20103036590000001" blue="0.1530425778" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="U9c-Qj-Q8k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="13a-Bz-6Fs"/>
                             <constraint firstItem="qh7-6r-v4f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="1Xz-Ef-hR6"/>
@@ -171,6 +176,10 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="pJN-0M-PUd" id="1ud-1O-8yu"/>
+                        <outlet property="forwardButton" destination="KVP-8W-sRD" id="cbZ-eJ-LNj"/>
+                        <outlet property="homeButton" destination="U9c-Qj-Q8k" id="WP9-3B-UJG"/>
+                        <outlet property="reloadButton" destination="o7j-vY-JDh" id="5XL-hU-wQ6"/>
                         <outlet property="whatsNewWebView" destination="qh7-6r-v4f" id="5sd-2o-Nvl"/>
                     </connections>
                 </viewController>

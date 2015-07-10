@@ -8,8 +8,10 @@
 
 import UIKit
 import XCTest
+import WhatsNew
 
-class WhatsNewTests: XCTestCase {
+
+class WhatsNewTests: XCTestCase { //TODO: write bunch of tests
     
     override func setUp() {
         super.setUp()
@@ -24,6 +26,14 @@ class WhatsNewTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
+        
+//        UIApplication.Ver
+ UIApplication.currentVersion
+  
+        XCTAssertEqual("1.2", UIApplication.currentVersion, "Current version should be 1.2")  //returns more expressive information
+        
+        //XCTAssertTrue(<#expression: BooleanType#>, <#message: String#>)
+        
     }
     
     func testPerformanceExample() {
@@ -32,5 +42,9 @@ class WhatsNewTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    //TODO: write test function  
+    //Write test explicetly for version comparison
+    
     
 }

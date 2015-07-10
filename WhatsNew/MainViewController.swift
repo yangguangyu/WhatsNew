@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 class MainViewController: UIViewController {
  
     //MARK: View Dids
@@ -21,34 +18,53 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    //    override func prefersStatusBarHidden() -> Bool {
-    //        return true
-    //    }
-    
-    
     override func viewDidAppear(animated: Bool) {
+        
+       
+        
         
         
         // CHOOSE THIS
         //-----Option to post alert via a NSURL
         
-        let whatsNewController = WhatsNewController()
-        whatsNewController.appViewController = (self)
-        whatsNewController.infoPageURL = NSURL(string: "http://infusionsoft.com") //edit url
-        whatsNewController.displayFromHTMLIfNecessary(embedded: true) //edit true or false
-
+      let whatsNewController = WhatsNewController()
+      whatsNewController.appViewController = (self)
+      whatsNewController.infoPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+      whatsNewController.displayFromURLIfNecessary(embedded: true) //edit true or false
+    //TODO: rename to include paramater embedded for displayFromURLIfNecessary inside title of method
+        
+        
+        
+        
+        
         
         
         // OR CHOOSE THIS
         //-----Option to post alert via an NSString
 
-        //        let whatsNewController = WhatsNewController()
-        //        whatsNewController.appViewController = (self)
-        //        whatsNewController.infoString = "-Pugs no longer randomly pee. \n-Fixed bug where Pugs were chasing Siri." //edit text
-        //        whatsNewController.displayFromStringIfNecessary()
-        
+//        let whatsNewController = WhatsNewController()
+//        whatsNewController.appViewController = (self)
+//        whatsNewController.infoString = "-Pugs no longer deficate when barking.\n-Pugs with three legs now have expected fourth leg in appropriate place.\n-When repositioning collar, Pug's head no longer separates from body." //edit text
+//        whatsNewController.displayFromStringIfNecessary()
+
     
         
         
+        
+        
+        
+        
+// (optional) USE THIS to customize your webview
+        //       whatsNewController.customButtonColor = UIColor.yellowColor()
+        //       whatsNewController.customBackgroundColor = UIColor.redColor()
+        
+        
+// (alternatively) If you don't want extra code, you can set the Tint Color of each button in the What's New view controller and the background color of the WhatsNewViewController view.  
+        
     }
+
+
 }
+
+
+

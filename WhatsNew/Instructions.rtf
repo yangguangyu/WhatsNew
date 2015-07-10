@@ -50,7 +50,7 @@ If porting WhatsNew SIMPLE ALERT code into an existing Objective C project that 
 \ls1\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
 Select all of the 'WhatsNewController' Swift code and paste into your bridged .swift file.\
 \ls1\ilvl0\kerning1\expnd0\expndtw0    2   \expnd0\expndtw0\kerning0
-Modify and paste this into your ViewWillAppear section.\
+Modify and paste this into your ViewWillAppear section in your Initial View Controller.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
@@ -64,7 +64,8 @@ Modify and paste this into your ViewWillAppear section.\
 \f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \CocoaLigature1 \
 \pard\pardeftab720
-\cf4 \
+\cf4 \expnd0\expndtw0\kerning0
+\
 \
 \pard\pardeftab720
 
@@ -82,7 +83,7 @@ Select all of the 'WhatsNewController' Swift code and paste into your bridged .s
 \ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}D\expnd0\expndtw0\kerning0
 rag the WhatsNew.storyboard into your project.\
 \ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
-Modify and paste this into your ViewWillAppear section.\
+Modify and paste this into your ViewWillAppear section in your Initial View Controller.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
@@ -92,11 +93,12 @@ Modify and paste this into your ViewWillAppear section.\
 \f2 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0     	\cf7 WhatsNewController\cf0  *whatsNew = [[\cf7 WhatsNewController\cf0  \cf8 alloc\cf0 ]\cf8 init\cf0 ];\
     	whatsNew.\cf9 infoPageURL\cf0  = [\cf7 NSURL\cf0  \cf8 URLWithString\cf0 :\cf11 @"http://www.infusionsoft.com"\cf0 ]; \cf12 //edit url\cf0 \
     	whatsNew.\cf9 appViewController\cf0  = \cf10 self\cf0 ;\
-    	[whatsNew \cf8 displayFromHTMLIfNecessaryWithEmbedded\cf0 :\cf10 true\cf0 ]; \cf12 //edit true or false
+    	[whatsNew \cf8 displayFromURLIfNecessaryWithEmbedded\cf0 :\cf10 true\cf0 ]; \cf12 //edit true or false
 \f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \CocoaLigature1 \
 \pard\pardeftab720
-\cf4 \
+\cf4 \expnd0\expndtw0\kerning0
+\
 \
 \pard\pardeftab720
 
@@ -122,11 +124,12 @@ Modify and paste this into your ViewWillAppear section.\
 \f2 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0         \cf10 let\cf0  whatsNewController = \cf13 WhatsNewController\cf0 ()\
         whatsNewController.\cf14 appViewController\cf0  = (\cf10 self\cf0 )\
         whatsNewController.\cf14 infoPageURL\cf0  = \cf7 NSURL\cf0 (string: \cf11 "http://infusionsoft.com"\cf0 ) \cf12 //edit url\
-\cf0         whatsNewController.\cf15 displayFromHTMLIfNecessary\cf0 (embedded: \cf10 true\cf0 ) \cf12 //edit true or false
+\cf0         whatsNewController.\cf15 displayFromURLIfNecessary\cf0 (embedded: \cf10 true\cf0 ) \cf12 //edit true or false
 \f1 \cf4 \cb6 \expnd0\expndtw0\kerning0
 \CocoaLigature1 \
 \pard\pardeftab720
-\cf4 \
+\cf4 \expnd0\expndtw0\kerning0
+\
 \
 \pard\pardeftab720
 
@@ -142,7 +145,7 @@ If porting WhatsNew SIMPLE ALERT code into an existing Swift project...
 \ls4\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
 Drag the WhatsNewController.swift file into your project.\
 \ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
-Modify and paste this into your ViewWillAppear section.\
+Modify and paste this into your ViewWillAppear section in your Initial View Controller.\
 \pard\pardeftab720
 
 \f1\fs28 \cf4 \cb6 \expnd0\expndtw0\kerning0
@@ -173,7 +176,7 @@ DETAILS\
 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720
 \ls5\ilvl0\cf4 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-For displayFromHTMLIfNecessary you can either pop out a Safari window by using embedded:false,  or you can embed the webpage inside our custom ViewController with embedded:true.  Either option requires that you designate an infoPageURL which is the webpage containing all of your version details. \
+For displayFromURLIfNecessary you can either pop out a Safari window by using embedded:false,  or you can embed the webpage inside our custom ViewController with embedded:true.  Either option requires that you designate an infoPageURL which is the webpage containing all of your version details. \
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
 For simple text alerts, edit the "infoString" which will provide the user with details regarding your new app's version. If you decide not to include an "infoString", the user will be alerted that a new version has been installed, without any details.\
 \ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0

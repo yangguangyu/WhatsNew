@@ -7,22 +7,31 @@
 //
 
 import UIKit
-typealias Version = String
-
+public typealias Version = String
 
 class WhatsNewController: UIViewController {
     
     //MARK: Initialization
     var infoPageURL: NSURL?
-    var infoString: NSString?
+    var infoString: NSString = "" //TODO cleanup this
     var appViewController: UIViewController?
-    @IBOutlet var whatsNewWebView: UIWebView?
+    var customButtonColor: UIColor?
+    var customBackgroundColor: UIColor?
+
+    //MARK: Outlets
+    @IBOutlet var whatsNewWebView: UIWebView!
+    @IBOutlet var homeButton: UIButton!
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var forwardButton: UIButton!
+    @IBOutlet var reloadButton: UIButton!
     
     //MARK: ViewDids
     override func viewDidLoad() {
         super.viewDidLoad()
-        beautify()
-        loadWebContent()
+        
+        beautify() //change colors of webview buttons and background
+        loadWebContent() //load webpage
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,19 +40,13 @@ class WhatsNewController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
     
-    
-    
     //MARK: Simple String Alert
-    func displayFromStringIfNecessary () { //what's new alert based on simple string
+    func displayFromStringIfNecessary () { //begin what's new alert based on simple string
         if UIApplication.isNewVersion {
-            if let confirmedString = infoString {
-                showString(confirmedString)
-            } else {
-                showString("")
-            }
+                showString(infoString)
         }
     }
-    func showString(messageText: NSString) { //show string
+    func showString(messageText: NSString) { //actually show string
         let alertController = UIAlertController (title: "Updated to Version \(UIApplication.currentVersion)", message: "\(messageText)", preferredStyle: .Alert)
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             UIApplication.persistVersion()
@@ -54,37 +57,56 @@ class WhatsNewController: UIViewController {
         }
     }
     
-    //MARK: HTML/WebView Alerts
-    func displayFromHTMLIfNecessary (#embedded:Bool) {  //what's new alert based on custom url
-        if UIApplication.isNewVersion {
+    //MARK: Web View Alerts
+    //TODO:Create more of these sweet things
+    /**
+    What does this thing do.
+    
+    :param: embedded What does embedded mean.
+    */
+    
+    func displayFromURLIfNecessary (#embedded:Bool) {  //begin what's new alert based on custom url
+        if UIApplication.isNewVersion { //TODO: remove pounds
             let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion)", message: "Would you like to see what's new?", preferredStyle: .Alert)
-            let OKAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
-                self.showWebPage(embedded:embedded)
+            let okAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
+                self.showWebPage(embedded:embedded)  //rename if needed  (openinsafari)
                 UIApplication.persistVersion()
             }
-            alertController.addAction(OKAction)
-            let NOKAction: UIAlertAction = UIAlertAction (title: "No Thanks", style: .Default) { action -> Void in
+            alertController.addAction(okAction)
+            let nokAction: UIAlertAction = UIAlertAction (title: "No Thanks", style: .Default) { action -> Void in
                 UIApplication.persistVersion()
             }
-            alertController.addAction(NOKAction)
+            alertController.addAction(nokAction)
             if let viewConfirmed = appViewController {
                 viewConfirmed.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
-    func beautify(){
-        view.backgroundColor = UIColor.darkGrayColor() //set to custom desired colors 
-        //TODO: add text uicolors as well?
+    func beautify(){  //change colors to match your app //TODO:  //titleColor as a Struct
+        //TODO: Figure out what that Infusionsoft Grey color really is.
+        
+        if let confirmedBGColor = customBackgroundColor{ //nil by default is black and I want grey 
+        view.backgroundColor = customBackgroundColor
+        }
+        
+        homeButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
+        backButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
+        forwardButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
+        reloadButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
     }
-    func showWebPage (#embedded:Bool) { //show webpage
+    func showWebPage (#embedded:Bool) { //actually show webpage
         if embedded {
-            if let viewConfirmed = appViewController {
-                var sb = UIStoryboard(name: "WhatsNew", bundle: nil)
-                if let vc = sb.instantiateViewControllerWithIdentifier("WhatsNewViewController") as? WhatsNewController {
-                    vc.infoPageURL = infoPageURL //pass the nsurl to the new view
-                    vc.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal //change page flip animation as desired
+            
+            let sb = UIStoryboard(name: "WhatsNew", bundle: nil)
+            if let viewConfirmed = appViewController, //TODO this is cool. Here we have combined multiple if let statements
+                vc = sb.instantiateViewControllerWithIdentifier("WhatsNewViewController") as? WhatsNewController {
+                    
+                    vc.infoPageURL = infoPageURL //pass nsurl to new view
+                    vc.customButtonColor = customButtonColor //pass to new view
+                    vc.customBackgroundColor = customBackgroundColor //pass to new view
+                    vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical //change page flip animation as desired
+                    
                     viewConfirmed.presentViewController(vc, animated: true, completion: nil)
-                }
             }
         } else {
             if let urlConfirmed = infoPageURL {
@@ -100,27 +122,35 @@ class WhatsNewController: UIViewController {
     }
     
     //MARK: Button Mashing
-    @IBAction func backHome (sender: UIButton) {self.dismissViewControllerAnimated(true, completion: nil)}
+    @IBAction func backHome (sender: UIButton){self.dismissViewControllerAnimated(true, completion: nil)}
     @IBAction func doRefresh(AnyObject) {whatsNewWebView?.reload()}
     @IBAction func goBack(AnyObject) {whatsNewWebView?.goBack()}
     @IBAction func goForward(AnyObject) {whatsNewWebView?.goForward()}
-    
 }
 
 //MARK: UIApplication extensions
 extension UIApplication {
-    static var currentVersion: Version { //check current version
+ public static var currentVersion: Version {
         if let confirmedVersion : Version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? Version {
             return confirmedVersion
         } else {
-            return "0.0"
+            return "0.0" //maybe change to "unknown"
         }
     }
-    static var isNewVersion: Bool { //check if it's a new version
+    
+    //TODO: //mark all of my tests as public in swift See line 139
+    
+    
+    //FIX 2.12.8 failed vs 2.2.0
+    //Break apart and figure out which is higher..  IP Address comparison.  Versioning..
+    
+    
+ public static var isNewVersion: Bool { //check if it's a new version
         var new: Bool = true
-        if let userData = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
-            if let lastKnownVersion: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(userData) {
-                if ("\(lastKnownVersion)" < currentVersion) {
+        if let userData = //TODO: wrap in if let ACtually combine all two iflets
+            NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
+            if let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as? String {
+                if (lastKnownVersion < currentVersion) {
                     new = true
                 } else {
                     new = false
