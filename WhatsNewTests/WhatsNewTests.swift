@@ -28,9 +28,11 @@ class WhatsNewTests: XCTestCase { //TODO: write bunch of tests
         XCTAssert(true, "Pass")
         
 //        UIApplication.Ver
- UIApplication.currentVersion
+
+        
+        ///XCTAssertEqual("1.2", UIApplication.isNewVersion, "Current version should be 1.2")
   
-        XCTAssertEqual("1.2", UIApplication.currentVersion, "Current version should be 1.2")  //returns more expressive information
+        ///XCTAssertEqual("1.2", UIApplication.currentVersion, "Current version should be 1.2")  //returns more expressive information
         
         //XCTAssertTrue(<#expression: BooleanType#>, <#message: String#>)
         
