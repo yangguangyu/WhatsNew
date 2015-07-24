@@ -25,16 +25,22 @@ class WhatsNewTests: XCTestCase { //TODO: write bunch of tests
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    
+        let oldVersions = ["0.0","1.0","2.2.1"].map{Version(string: $0)!} //MARK: check this out..
+        let newVersions = ["0.1","1.0.1","2.10.1"].map{Version(string: $0)!}
         
-//        UIApplication.Ver
+        
+        for i in 0..<oldVersions.count {
+        
+            XCTAssertLessThan(oldVersions[i], newVersions[i])
+
+        }
+        
+            
+        XCTAssertEqual(Version(string: "2.0")!, Version(string: "2.0")!, "Equality!")
 
         
-        ///XCTAssertEqual("1.2", UIApplication.isNewVersion, "Current version should be 1.2")
-  
-        ///XCTAssertEqual("1.2", UIApplication.currentVersion, "Current version should be 1.2")  //returns more expressive information
-        
-        //XCTAssertTrue(<#expression: BooleanType#>, <#message: String#>)
+
         
     }
     

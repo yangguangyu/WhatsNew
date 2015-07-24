@@ -7,16 +7,29 @@
 //
 
 import UIKit
-public typealias Version = String
 
 class WhatsNewController: UIViewController {
     
     //MARK: Initialization
     var infoPageURL: NSURL?
-    var infoString: NSString = "" //TODO cleanup this
+    var infoString = ""
     var appViewController: UIViewController?
     var customButtonColor: UIColor?
     var customBackgroundColor: UIColor?
+    var showOnFirstLaunch = false
+    
+    //TODO: Expose the following
+    //expose title of popup
+    var alertTitle = ""
+    var alertMessage = ""
+    var alertOk = ""
+    var alertNoThanks = ""
+    var alertWouldYouLikeToSeeWhatsNew = ""
+    var alertUpdatedToVersion = ""
+
+
+    //expose ok text
+    //expose display text
 
     //MARK: Outlets
     @IBOutlet var whatsNewWebView: UIWebView!
@@ -39,15 +52,22 @@ class WhatsNewController: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
+
     //MARK: Simple String Alert
+
+    /**
+    Displays What's New information via a custom String if a new version is detected.
+    
+    :param: infoString This String contains the list of new features. If no String is detected, What's New just displays the new version number.
+    */
+    
     func displayFromStringIfNecessary () { //begin what's new alert based on simple string
-        if UIApplication.isNewVersion {
+        if UIApplication.isUpdatedVersion {
                 showString(infoString)
         }
     }
     func showString(messageText: NSString) { //actually show string
-        let alertController = UIAlertController (title: "Updated to Version \(UIApplication.currentVersion)", message: "\(messageText)", preferredStyle: .Alert)
+        let alertController = UIAlertController (title: "Updated to Version \(UIApplication.currentVersion.string)", message: "\(messageText)", preferredStyle: .Alert)
         let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
             UIApplication.persistVersion()
         }
@@ -57,33 +77,56 @@ class WhatsNewController: UIViewController {
         }
     }
     
-    //MARK: Web View Alerts
-    //TODO:Create more of these sweet things
-    /**
-    What does this thing do.
     
-    :param: embedded What does embedded mean.
+
+    //MARK: Web View Alerts
+    
+    /**
+    Displays What's New information via a custom URL if a new version is detected.
+    
+    :param: displayInsideApp This Bool designates whether you would prefer the URL to open embedded within the application, never leaving it, or whether you would prefer the URL to open up in an external browser.
     */
     
-    func displayFromURLIfNecessary (#embedded:Bool) {  //begin what's new alert based on custom url
-        if UIApplication.isNewVersion { //TODO: remove pounds
-            let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion)", message: "Would you like to see what's new?", preferredStyle: .Alert)
-            let okAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
-                self.showWebPage(embedded:embedded)  //rename if needed  (openinsafari)
+    func displayFromURLIfNeccessaryInsideApp (displayInsideApp: Bool) {  //begin what's new alert based on custom url
+        
+        if UIApplication.isFirstRun {  //if this is the first run..
+            if showOnFirstLaunch { //if you want to show something cool..
+                NSLog("bing bada boom")
+            }
+            
+        } else if UIApplication.isUpdatedVersion { //if this is not a first run check if it's an updated version..
+            
+                let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion.string)", message: "Would you like to see what's new?", preferredStyle: .Alert) //TODO: Move strings to user accessable
+                let okAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
+                self.showWebPage(displayInsideApp)  //rename if needed  (openinsafari)
                 UIApplication.persistVersion()
             }
-            alertController.addAction(okAction)
-            let nokAction: UIAlertAction = UIAlertAction (title: "No Thanks", style: .Default) { action -> Void in
+                alertController.addAction(okAction)
+                let nokAction: UIAlertAction = UIAlertAction (title: "No Thanks", style: .Default) { action -> Void in
                 UIApplication.persistVersion()
             }
-            alertController.addAction(nokAction)
-            if let viewConfirmed = appViewController {
+                alertController.addAction(nokAction)
+                if let viewConfirmed = appViewController {
                 viewConfirmed.presentViewController(alertController, animated: true, completion: nil)
             }
         }
+            
+  
     }
-    func beautify(){  //change colors to match your app //TODO:  //titleColor as a Struct
-        //TODO: Figure out what that Infusionsoft Grey color really is.
+    
+    func beautify(){  //change colors to match your app 
+        
+        
+        
+        //experiments
+  
+        let buttonDesignOfCoolness = ButtonDesign()
+        
+        buttonDesignOfCoolness.standardColor = UIColor .greenColor()
+        
+        //end experiments
+        
+        
         
         if let confirmedBGColor = customBackgroundColor{ //nil by default is black and I want grey 
         view.backgroundColor = customBackgroundColor
@@ -94,11 +137,24 @@ class WhatsNewController: UIViewController {
         forwardButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
         reloadButton.setTitleColor(customButtonColor, forState: UIControlState.Normal)
     }
-    func showWebPage (#embedded:Bool) { //actually show webpage
-        if embedded {
+    
+    
+    //experiment
+    //TODO:custom color struct?
+    class ButtonDesign {
+        var standardColor = UIColor .blueColor()
+        var destructiveColor = UIColor .redColor()
+        var backgroundColor = UIColor .yellowColor()
+    }
+    
+    
+    //end experiment
+    
+    func showWebPage (displayInsideApp:Bool) { //actually show webpage
+        if displayInsideApp {
             
             let sb = UIStoryboard(name: "WhatsNew", bundle: nil)
-            if let viewConfirmed = appViewController, //TODO this is cool. Here we have combined multiple if let statements
+            if let viewConfirmed = appViewController, //MARK this is cool. Here we have combined multiple if let statements
                 vc = sb.instantiateViewControllerWithIdentifier("WhatsNewViewController") as? WhatsNewController {
                     
                     vc.infoPageURL = infoPageURL //pass nsurl to new view
@@ -114,6 +170,8 @@ class WhatsNewController: UIViewController {
             }
         }
     }
+
+    
     func loadWebContent() { //reload webpage
         if let confirmedURL = infoPageURL {
             let request = NSURLRequest (URL: confirmedURL)
@@ -128,38 +186,8 @@ class WhatsNewController: UIViewController {
     @IBAction func goForward(AnyObject) {whatsNewWebView?.goForward()}
 }
 
-//MARK: UIApplication extensions
-extension UIApplication {
- public static var currentVersion: Version {
-        if let confirmedVersion : Version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? Version {
-            return confirmedVersion
-        } else {
-            return "0.0" //maybe change to "unknown"
-        }
-    }
-    
-    //TODO: //mark all of my tests as public in swift See line 139
-    
-    
-    //FIX 2.12.8 failed vs 2.2.0
-    //Break apart and figure out which is higher..  IP Address comparison.  Versioning..
-    
-    
- public static var isNewVersion: Bool { //check if it's a new version
-        var new: Bool = true
-        if let userData = //TODO: wrap in if let ACtually combine all two iflets
-            NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
-            if let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as? String {
-                if (lastKnownVersion < currentVersion) {
-                    new = true
-                } else {
-                    new = false
-                }
-            }
-        }
-        return new
-    }
-    static func persistVersion () { //store current version
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(UIApplication.currentVersion), forKey: "WhatsNew_LastKnownVersion")
-    }
-}
+
+
+
+
+

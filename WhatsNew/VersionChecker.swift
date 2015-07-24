@@ -9,50 +9,55 @@
 import Foundation
 import UIKit
 
-struct Version: Equatable, Comparable {
+//MARK: Version and logic
+
+public struct Version: Equatable, Comparable, Printable { //MARK: check this out..  make things printable
     
     let string: String
     var splitVersion: [Int]
+    public var description: String {
+        return string
+    }
     
-    init?(string: String) {
+    public init?(string: String) {
+        
         self.string = string
         let splitVersionAsStrings = split(string) { $0 == "." }
         var tempSplitVersion = [Int]()
         
         for splitString in splitVersionAsStrings {
-
+            
             if let splitInt = splitString.toInt() {
-            
+                
                 tempSplitVersion.append(splitInt)
-            
+                
             } else {
-
+                
                 return nil
             }
         }
-        splitVersion = tempSplitVersion //? I forget what this accomplishes but I assume it's saving it for later use.
-    }
-    
-}
-
-
-func == (lhs: Version, rhs: Version) -> Bool {
-    
-    if lhs.string == rhs.string {
-        println("Equality for all digits!")
-        return true
-    
-    } else {
-        return false
+        
+        splitVersion = tempSplitVersion
     }
 }
 
 
-func < (lhs: Version, rhs: Version) -> Bool {
+public func == (lhs: Version, rhs: Version) -> Bool {
+    
+    var result: Bool = false
+
+    result = lhs.string == rhs.string
+
+    return result
+    
+}
+
+
+public func < (lhs: Version, rhs: Version) -> Bool {
     
     let (rhsPadded, lhsPadded) = padding(rhs, lhs) // both Versions should now be the same amt of digits
     
-    var confirmed = false
+    var lessThan = false
     
     for var i = 0; i < Int(rhsPadded.count); i++ {
         
@@ -60,86 +65,111 @@ func < (lhs: Version, rhs: Version) -> Bool {
         var rhsInt = rhsPadded[i]
         
         if lhsInt < rhsInt {
-            println("YES, It's less than the other version.")
-            confirmed = true
+            //println("YES, It's less than the other version.")
+            lessThan = true
             break
             
         } else if lhsInt > rhsInt {
-            println("Nope, definitely not less than.")
-            confirmed = false
+            //println("Nope, definitely not less than.")
+            lessThan = false
             break
             
         } else {
-            println("Not exactly sure yet, keep checking.")
-            confirmed = false
+            //println("Not exactly sure yet, keep checking.")
+            lessThan = false
             //don't break keep checking..
         }
         
     }
-    return confirmed
+    return lessThan
 }
 
-func padding (rhs: Version, lhs:Version) -> ([Int], [Int]) { //this makes 3.1 match 3.1.0.0.0
+public func padding (rhs: Version, lhs:Version) -> ([Int], [Int]) { //this makes 3.1 match 3.1.0.0.0
     
     var tempSplitRhs = rhs.splitVersion
     var tempSplitLhs = lhs.splitVersion
     
     if tempSplitRhs.count < tempSplitLhs.count { //if rhs is less than lhs add zeros
+        
         let x = tempSplitLhs.count - tempSplitRhs.count
         for var i = 0; i < Int(x); i++ {
+            
             tempSplitRhs.append(0)
+            
         }
     } else if tempSplitLhs.count < tempSplitRhs.count { //if lhs is less than rhs add zeros
+        
         let x = tempSplitRhs.count - tempSplitLhs.count
         for var i = 0; i < Int(x); i++ {
+            
             tempSplitLhs.append(0)
+            
         }
     }
     
     return ( tempSplitRhs, tempSplitLhs )
-    
 }
-
 
 
 //MARK: UIApplication extensions
+
 extension UIApplication {
-
-    public static var isNewVersion: Bool { //check if it's a new version
-
-        var new: Bool = true
+    
+    public static var isFirstRun: Bool {
         
-        if let userData = //TODO: wrap in if let ACtually combine all two iflets
-            NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? NSData {
-        
-        
-                if let lastKnownVersion = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as? String {
-
-                    let lastVersion = Version(string: lastKnownVersion)
-                    
-                    if (lastVersion < currentVersion) { //BOOM! this now uses new Version operator to compare!
-                        new = true
-                    } else {
-                        new = false
-                    }
-                }
+        if (NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") == nil) {
+            
+            NSLog("First time running this!")
+            return true
+            
+        } else {
+            
+            NSLog("Not my first rodeo!")
+            return false
         }
-        return new
+        
+    }
+    
+    public static var isUpdatedVersion: Bool { //TODO:..  and make it so that on first run has the option to show a popup, or present other information.
+        
+        var result: Bool = false
+        
+        if let lastKnownVersion = NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") as? String, lastVersion = Version(string: lastKnownVersion) {
+            
+            result = lastVersion < currentVersion
+
+        } else {  //first time running app so let's persist version
+            
+           ////// persistVersion()  //FIXME: Disabled for testing
+            
+        }
+        return result
     }
 
-static var currentVersion: Version { //pull current version from launched App
     
-    if let confirmedVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
-        return Version(string: confirmedVersion)!
-
-    } else {
-        return Version(string: "0.0")!  //TODO: remove ! ?
+    public static var currentVersion: Version {
+        
+        if let appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
+            
+            if let appVersionLegit = Version(string: appVersion) {
+                
+                return appVersionLegit
+                
+            } else {
+                
+                NSLog("Unconventional version name, doing nothing.")
+                return Version(string: "0.0")!
+            }
+        } else {
+            
+            NSLog("No version were detected.. That's weird.")
+            return Version(string: "0.0")!
+        }
     }
-}
-
-static func persistVersion () { //store current version to device
     
-    NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(UIApplication.currentVersion.string), forKey: "WhatsNew_LastKnownVersion")
+    public static func persistVersion () {
+        
+        NSUserDefaults.standardUserDefaults().setObject(currentVersion.string, forKey: "WhatsNew_LastKnownVersion")
     }
 }
 
