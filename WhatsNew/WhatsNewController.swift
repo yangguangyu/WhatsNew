@@ -11,25 +11,20 @@ import UIKit
 class WhatsNewController: UIViewController {
     
     //MARK: Initialization
-    var infoPageURL: NSURL?
-    var infoString = ""
     var appViewController: UIViewController?
-    var customButtonColor: UIColor?
-    var customBackgroundColor: UIColor?
     var showOnFirstLaunch = false
     
     //TODO: Expose the following
-    //expose title of popup
-    var alertTitle = ""
+    var alertPageURL: NSURL?
     var alertMessage = ""
-    var alertOk = ""
-    var alertNoThanks = ""
-    var alertWouldYouLikeToSeeWhatsNew = ""
-    var alertUpdatedToVersion = ""
+    var alertOk = "OK"
+    var alertNoThanks = "No Thanks"
+    var alertUpdatedToVersion = "Updated to Version \(UIApplication.currentVersion.string)"
+    var alertWouldYouLikeToSeeWhatsNew = "Would you like to see what's new?"
+    var firstRunOk = "OK"
+    var firstRunTitle = "Thanks!"
+    var firstRunMessage = "If you have any questions check out our info page."
 
-
-    //expose ok text
-    //expose display text
 
     //MARK: Outlets
     @IBOutlet var whatsNewWebView: UIWebView!
@@ -58,24 +53,36 @@ class WhatsNewController: UIViewController {
     /**
     Displays What's New information via a custom String if a new version is detected.
     
-    :param: infoString This String contains the list of new features. If no String is detected, What's New just displays the new version number.
+    :param: alertMessage This String contains the list of new features. If no String is detected, What's New just displays the new version number.
     */
     
     func displayFromStringIfNecessary () { //begin what's new alert based on simple string
-        if UIApplication.isUpdatedVersion {
-                showString(infoString)
+        
+        if UIApplication.isFirstRun && showOnFirstLaunch {  //if this is the first run..
+            
+            firstRunAlert()
+    
+        } else if UIApplication.isUpdatedVersion {
+            
+            let alertController = UIAlertController (title: alertUpdatedToVersion, message: alertMessage, preferredStyle: .Alert)
+       
+            let OKAction: UIAlertAction = UIAlertAction(title: alertOk, style: .Default) { action -> Void in
+            
+                UIApplication.persistVersion()
+        
+            }
+        
+            alertController.addAction(OKAction)
+        
+            if let confirmedView = appViewController {
+            
+                confirmedView.presentViewController(alertController, animated: true, completion: nil)
+        
+            }
+        
         }
     }
-    func showString(messageText: NSString) { //actually show string
-        let alertController = UIAlertController (title: "Updated to Version \(UIApplication.currentVersion.string)", message: "\(messageText)", preferredStyle: .Alert)
-        let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
-            UIApplication.persistVersion()
-        }
-        alertController.addAction(OKAction)
-        if let confirmedView = appViewController {
-            confirmedView.presentViewController(alertController, animated: true, completion: nil)
-        }
-    }
+    
     
     
 
@@ -89,24 +96,32 @@ class WhatsNewController: UIViewController {
     
     func displayFromURLIfNeccessaryInsideApp (displayInsideApp: Bool) {  //begin what's new alert based on custom url
         
-        if UIApplication.isFirstRun {  //if this is the first run..
-            if showOnFirstLaunch { //if you want to show something cool..
-                NSLog("bing bada boom")
-            }
+        if UIApplication.isFirstRun && showOnFirstLaunch { //if you want to show something cool..
+            
+            firstRunAlert()
             
         } else if UIApplication.isUpdatedVersion { //if this is not a first run check if it's an updated version..
             
-                let alertController = UIAlertController(title: "Updated to Version \(UIApplication.currentVersion.string)", message: "Would you like to see what's new?", preferredStyle: .Alert) //TODO: Move strings to user accessable
-                let okAction: UIAlertAction = UIAlertAction (title: "OK", style: .Default) { action -> Void in
+            let alertController = UIAlertController(title: alertUpdatedToVersion, message: alertWouldYouLikeToSeeWhatsNew, preferredStyle: .Alert) //TODO: Move strings to user accessable
+            
+            let okAction: UIAlertAction = UIAlertAction (title: alertOk, style: .Default) { action -> Void in
+                
                 self.showWebPage(displayInsideApp)  //rename if needed  (openinsafari)
+                
                 UIApplication.persistVersion()
             }
-                alertController.addAction(okAction)
-                let nokAction: UIAlertAction = UIAlertAction (title: "No Thanks", style: .Default) { action -> Void in
+            
+            alertController.addAction(okAction)
+            
+            let nokAction: UIAlertAction = UIAlertAction (title: alertNoThanks, style: .Default) { action -> Void in
+                
                 UIApplication.persistVersion()
             }
-                alertController.addAction(nokAction)
-                if let viewConfirmed = appViewController {
+            
+            alertController.addAction(nokAction)
+            
+            if let viewConfirmed = appViewController {
+                
                 viewConfirmed.presentViewController(alertController, animated: true, completion: nil)
             }
         }
@@ -114,18 +129,33 @@ class WhatsNewController: UIViewController {
   
     }
     
-    func beautify(){  //change colors to match your app 
+    func firstRunAlert() {
         
+        let alertController = UIAlertController (title: firstRunTitle, message: firstRunMessage, preferredStyle: .Alert)
         
+        let OKAction: UIAlertAction = UIAlertAction(title: firstRunOk, style: .Default) { action -> Void in
+            
+            UIApplication.persistVersion() //TODO: redundant?
+            
+        }
         
-        //experiments
-  
-        let buttonDesignOfCoolness = ButtonDesign()
+        alertController.addAction(OKAction)
         
-        buttonDesignOfCoolness.standardColor = UIColor .greenColor()
+        if let confirmedView = appViewController {
+            
+            confirmedView.presentViewController(alertController, animated: true, completion: nil)
+            
+        }
         
-        //end experiments
-        
+
+    }
+    
+    //TODO: Combine into one alert?
+    func showAlert (title: String)(message: String)(ok: String)(cancel: String) {
+    }
+    
+    //TODO: phase out?
+    func beautify(){  //change colors to match your app
         
         
         if let confirmedBGColor = customBackgroundColor{ //nil by default is black and I want grey 
@@ -139,17 +169,6 @@ class WhatsNewController: UIViewController {
     }
     
     
-    //experiment
-    //TODO:custom color struct?
-    class ButtonDesign {
-        var standardColor = UIColor .blueColor()
-        var destructiveColor = UIColor .redColor()
-        var backgroundColor = UIColor .yellowColor()
-    }
-    
-    
-    //end experiment
-    
     func showWebPage (displayInsideApp:Bool) { //actually show webpage
         if displayInsideApp {
             
@@ -157,7 +176,7 @@ class WhatsNewController: UIViewController {
             if let viewConfirmed = appViewController, //MARK this is cool. Here we have combined multiple if let statements
                 vc = sb.instantiateViewControllerWithIdentifier("WhatsNewViewController") as? WhatsNewController {
                     
-                    vc.infoPageURL = infoPageURL //pass nsurl to new view
+                    vc.alertPageURL = alertPageURL //pass nsurl to new view
                     vc.customButtonColor = customButtonColor //pass to new view
                     vc.customBackgroundColor = customBackgroundColor //pass to new view
                     vc.modalTransitionStyle = UIModalTransitionStyle.CoverVertical //change page flip animation as desired
@@ -165,7 +184,7 @@ class WhatsNewController: UIViewController {
                     viewConfirmed.presentViewController(vc, animated: true, completion: nil)
             }
         } else {
-            if let urlConfirmed = infoPageURL {
+            if let urlConfirmed = alertPageURL {
                 UIApplication.sharedApplication().openURL(urlConfirmed)
             }
         }
@@ -173,7 +192,7 @@ class WhatsNewController: UIViewController {
 
     
     func loadWebContent() { //reload webpage
-        if let confirmedURL = infoPageURL {
+        if let confirmedURL = alertPageURL {
             let request = NSURLRequest (URL: confirmedURL)
             whatsNewWebView?.loadRequest(request)
         }

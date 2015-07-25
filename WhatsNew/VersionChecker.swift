@@ -11,7 +11,7 @@ import UIKit
 
 //MARK: Version and logic
 
-public struct Version: Equatable, Comparable, Printable { //MARK: check this out..  make things printable
+public struct Version: Equatable, Comparable, Printable {
     
     let string: String
     var splitVersion: [Int]
@@ -55,7 +55,7 @@ public func == (lhs: Version, rhs: Version) -> Bool {
 
 public func < (lhs: Version, rhs: Version) -> Bool {
     
-    let (rhsPadded, lhsPadded) = padding(rhs, lhs) // both Versions should now be the same amt of digits
+    let (rhsPadded, lhsPadded) = padding(rhs, lhs) // both Versions should now be same amt of digits
     
     var lessThan = false
     
@@ -118,16 +118,14 @@ extension UIApplication {
     public static var isFirstRun: Bool {
         
         if (NSUserDefaults.standardUserDefaults().valueForKey("WhatsNew_LastKnownVersion") == nil) {
-            
-            NSLog("First time running this!")
-            return true
+           
+            persistVersion()
+            return true //first run!
             
         } else {
             
-            NSLog("Not my first rodeo!")
-            return false
+            return false //not my first rodeo
         }
-        
     }
     
     public static var isUpdatedVersion: Bool { //TODO:..  and make it so that on first run has the option to show a popup, or present other information.
@@ -138,11 +136,8 @@ extension UIApplication {
             
             result = lastVersion < currentVersion
 
-        } else {  //first time running app so let's persist version
-            
-           ////// persistVersion()  //FIXME: Disabled for testing
-            
         }
+    
         return result
     }
 
@@ -157,7 +152,7 @@ extension UIApplication {
                 
             } else {
                 
-                NSLog("Unconventional version name, doing nothing.")
+                NSLog("Unconventional version name, no action.")
                 return Version(string: "0.0")!
             }
         } else {
