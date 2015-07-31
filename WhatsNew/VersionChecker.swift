@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 
 //MARK: Version and logic
-
 public struct Version: Equatable, Comparable, Printable {
     
     let string: String
     var splitVersion: [Int]
+    
     public var description: String {
+        
         return string
     }
     
@@ -36,7 +37,6 @@ public struct Version: Equatable, Comparable, Printable {
                 return nil
             }
         }
-        
         splitVersion = tempSplitVersion
     }
 }
@@ -45,9 +45,7 @@ public struct Version: Equatable, Comparable, Printable {
 public func == (lhs: Version, rhs: Version) -> Bool {
     
     var result: Bool = false
-
     result = lhs.string == rhs.string
-
     return result
     
 }
@@ -56,9 +54,8 @@ public func == (lhs: Version, rhs: Version) -> Bool {
 public func < (lhs: Version, rhs: Version) -> Bool {
     
     let (rhsPadded, lhsPadded) = padding(rhs, lhs) // both Versions should now be same amt of digits
-    
     var lessThan = false
-    
+
     for var i = 0; i < Int(rhsPadded.count); i++ {
         
         var lhsInt = lhsPadded[i]
@@ -103,10 +100,8 @@ public func padding (rhs: Version, lhs:Version) -> ([Int], [Int]) { //this makes
         for var i = 0; i < Int(x); i++ {
             
             tempSplitLhs.append(0)
-            
         }
     }
-    
     return ( tempSplitRhs, tempSplitLhs )
 }
 
@@ -137,7 +132,6 @@ extension UIApplication {
             result = lastVersion < currentVersion
 
         }
-    
         return result
     }
 

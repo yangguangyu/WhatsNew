@@ -19,11 +19,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-
-        
-        //---------THIS----------
-        
+    
         
         //-----CHOOSE THIS
         //-----Option to post alert via a NSURL
@@ -32,28 +28,23 @@ class MainViewController: UIViewController {
         let whatsNewController = WhatsNewController()
         
         //(paste any customizations here)
-        whatsNewController.alertOk = "Yep"
-        whatsNewController.alertNoThanks = "Nope"
-        whatsNewController.alertUpdatedToVersion = "Presenting Version "
-        whatsNewController.alertWouldYouLikeToSeeWhatsNew = "Want to see what is new?"
-        whatsNewController.showOnFirstLaunch = true
-        whatsNewController.firstRunOk = "Sounds good."
-        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
-        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
-        whatsNewController.customModalTransition = UIModalTransitionStyle.PartialCurl
-        whatsNewController.customButtonColor = UIColor.yellowColor()
-        whatsNewController.customBackgroundColor = UIColor.redColor()
+//        whatsNewController.alertOk = "Yep"
+//        whatsNewController.alertNoThanks = "Nope"
+//        whatsNewController.alertUpdatedToVersion = "Presenting Version "
+//        whatsNewController.alertWouldYouLikeToSeeWhatsNew = "Want to see what is new?"
+//        whatsNewController.showOnFirstLaunch = true
+//        whatsNewController.firstRunOk = "Sounds good."
+//        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
+//        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
+//        whatsNewController.customModalTransition = UIModalTransitionStyle.PartialCurl
+//        whatsNewController.customButtonColor = UIColor.yellowColor()
+//        whatsNewController.customBackgroundColor = UIColor.redColor()
         
         //(required 2)
-//        whatsNewController.appViewController = (self)
-//        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
-//        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
+        whatsNewController.appViewController = (self)
+        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
         
-        
-        
-
-        //---------OR THIS----------
-       
         
         //-----OR CHOOSE THIS
         //-----Option to post alert via an NSString

@@ -12,16 +12,19 @@ class WhatsNewController: UIViewController {
     
     //MARK: Initialization
     var appViewController: UIViewController?
+    
     var customButtonColor: UIColor?
     var customBackgroundColor: UIColor?
     var customModalTransition: UIModalTransitionStyle = .CoverVertical
-    var showOnFirstLaunch = false
+    
     var alertPageURL: NSURL?
     var alertMessage = ""
     var alertOk = NSLocalizedString("OK", comment: "Okay")
     var alertNoThanks = NSLocalizedString("No Thanks", comment: "No, thank you")
     var alertUpdatedToVersion = NSLocalizedString("Updated to Version ", comment: "Updated to Version ")
     var alertWouldYouLikeToSeeWhatsNew = NSLocalizedString("Would you like to see what's new?", comment:"Would you like to see what is new?")
+    
+    var showOnFirstLaunch = false
     var firstRunOk = NSLocalizedString("OK", comment: "OK")
     var firstRunTitle = NSLocalizedString("Welcome", comment: "Welcome")
     var firstRunMessage = NSLocalizedString("If you have any questions check out our info page.", comment: "If you have any questions please see our info page.")
@@ -155,7 +158,6 @@ class WhatsNewController: UIViewController {
         if let confirmedView = appViewController {
             
             confirmedView.presentViewController(alertController, animated: true, completion: nil)
-            
         }
     }
     
