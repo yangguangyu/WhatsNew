@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
     
         
-        //-----CHOOSE THIS
+//------//-----CHOOSE THIS
         //-----Option to post alert via a NSURL
         
         // (required 1)
@@ -45,17 +45,19 @@ class MainViewController: UIViewController {
         whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
         whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
         
-        
-        //-----OR CHOOSE THIS
+//------//-----OR CHOOSE THIS
         //-----Option to post alert via an NSString
         
         //(required 1)
 //        let whatsNewController = WhatsNewController()
 //        
-//        //(optional)
-////        whatsNewController.alertOk = "Sounds good."
-////        whatsNewController.alertUpdatedToVersion = "Presenting Version "
-////        whatsNewController.showOnFirstLaunch = true
+        //(paste any customizations here)
+////      whatsNewController.alertOk = "Sounds good."
+////      whatsNewController.alertUpdatedToVersion = "Presenting Version "
+////      whatsNewController.showOnFirstLaunch = true
+//        whatsNewController.firstRunOk = "Sounds good."
+//        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
+//        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
 //        
 //        //(required 2)
 //        whatsNewController.appViewController = (self)
