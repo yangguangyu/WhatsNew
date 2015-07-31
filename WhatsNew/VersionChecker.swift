@@ -65,7 +65,7 @@ public func < (lhs: Version, rhs: Version) -> Bool {
         var rhsInt = rhsPadded[i]
         
         if lhsInt < rhsInt {
-            //println("YES, It's less than the other version.")
+            //println("Yes, It's less than the other version.")
             lessThan = true
             break
             
@@ -128,7 +128,7 @@ extension UIApplication {
         }
     }
     
-    public static var isUpdatedVersion: Bool { //TODO:..  and make it so that on first run has the option to show a popup, or present other information.
+    public static var isUpdatedVersion: Bool { //TODO:..  make it so that on first run has the option to show a popup, or present other information.
         
         var result: Bool = false
         
@@ -152,7 +152,7 @@ extension UIApplication {
                 
             } else {
                 
-                NSLog("Unconventional version name, no action.")
+                NSLog("Unconventional version name.. How unique.")
                 return Version(string: "0.0")!
             }
         } else {

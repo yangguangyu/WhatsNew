@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Happy Pugs: The Game"; ObjectID = "7w0-Wk-zWk"; */
+"7w0-Wk-zWk.text" = "행복 퍼그: 게임";
+
+/* Class = "UIViewController"; title = "WhatsNewViewController"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "WhatsNewViewController";
+
+/* Class = "UIButton"; accessibilityLabel = "Forward in Browser"; ObjectID = "KVP-8W-sRD"; */
+"KVP-8W-sRD.accessibilityLabel" = "앞으로";
+
+/* Class = "UIButton"; normalTitle = "→"; ObjectID = "KVP-8W-sRD"; */
+"KVP-8W-sRD.normalTitle" = "→";
+
+/* Class = "UILabel"; text = "Some sweet app."; ObjectID = "OKX-sS-bNq"; */
+"OKX-sS-bNq.text" = "일부 달콤한 애플 리케이션";
+
+/* Class = "UIButton"; accessibilityLabel = "Back to App Home Page"; ObjectID = "U9c-Qj-Q8k"; */
+"U9c-Qj-Q8k.accessibilityLabel" = "돌아 가기 홈페이지로";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "U9c-Qj-Q8k"; */
+"U9c-Qj-Q8k.normalTitle" = "X";
+
+/* Class = "UIButton"; accessibilityLabel = "Refresh"; ObjectID = "o7j-vY-JDh"; */
+"o7j-vY-JDh.accessibilityLabel" = "새로 고침";
+
+/* Class = "UIButton"; normalTitle = "↻"; ObjectID = "o7j-vY-JDh"; */
+"o7j-vY-JDh.normalTitle" = "↻";
+
+/* Class = "UIButton"; accessibilityLabel = "Back in Browser"; ObjectID = "pJN-0M-PUd"; */
+"pJN-0M-PUd.accessibilityLabel" = "백";
+
+/* Class = "UIButton"; normalTitle = "←"; ObjectID = "pJN-0M-PUd"; */
+"pJN-0M-PUd.normalTitle" = "←";

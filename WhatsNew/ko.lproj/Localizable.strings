@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  WhatsNew
+
+  Created by Dave Levy on 7/26/15.
+  Copyright (c) 2015 Infusionsoft. All rights reserved.
+*/
+
+//
+
+//CFBundleDisplayName = "What's New"
+
+"OK" = "그래";
+"No Thanks" = "괜찮습니다";
+"Updated to Version " = "버전으로 업데이트 ";
+"Would you like to see what's new?" = "당신은 새로운 기능을 참조 하시겠습니까?";
+"Thanks!" = "고맙습니다";
+"If you have any questions check out our info page." = "당신은 질문이있는 경우에는 우리의 정보 페이지를 방문하십시오";
+"Welcome" = "환영";
+

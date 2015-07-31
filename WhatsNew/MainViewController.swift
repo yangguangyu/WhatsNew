@@ -20,37 +20,75 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+
         
-        // CHOOSE THIS
+        //---------THIS----------
+        
+        
+        //-----CHOOSE THIS
         //-----Option to post alert via a NSURL
+        
+        // (required 1)
         let whatsNewController = WhatsNewController()
-        whatsNewController.showOnFirstLaunch = true  //if this is not included it just skips and doesn't show anything
-        whatsNewController.appViewController = (self)
-        whatsNewController.infoPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
-        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
-
         
-        // OR CHOOSE THIS
-        //-----Option to post alert via an NSString
-//
-//        let whatsNewController = WhatsNewController()
-//        whatsNewController.appViewController = (self)
-//        whatsNewController.infoString = "-Pugs no longer deficate when barking.\n-Pugs with three legs now have expected fourth leg in appropriate place.\n-When repositioning collar, Pug's head no longer separates from body." //edit text
-//        whatsNewController.displayFromStringIfNecessary()
+        //(optional)
+//        whatsNewController.alertOk = "Yep"
+//        whatsNewController.alertNoThanks = "Nope"
+//        whatsNewController.alertUpdatedToVersion = "Presenting Version "
+//        whatsNewController.alertWouldYouLikeToSeeWhatsNew = "Want to see what is new?"
 //        whatsNewController.showOnFirstLaunch = true
-        //TODO: if it's a first launch then do you want to show still, or do you want to show other information.  showOnFirstLaunch bool default to False. isFirstLaunch bool add to other page
+//        whatsNewController.firstRunOk = "Sounds good."
+//        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
+//        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
+//        whatsNewController.customModalTransition = UIModalTransitionStyle.PartialCurl
+        whatsNewController.customButtonColor = UIColor.yellowColor()
+        whatsNewController.customBackgroundColor = UIColor.redColor()
+        
+        //(required 2)
+        whatsNewController.appViewController = (self)
+        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
+        
+        
+        
 
-    
+        //---------OR THIS----------
+       
         
-        ///whatsNewController.homeButton //already exposed
+        //-----OR CHOOSE THIS
+        //-----Option to post alert via an NSString
+        
+        //(required 1)
+//        let whatsNewController = WhatsNewController()
+//        
+        //(optional)
+//        whatsNewController.alertOk = "Sounds good."
+//        whatsNewController.alertUpdatedToVersion = "Presenting Version "
+//        whatsNewController.showOnFirstLaunch = true
+//        
+        //(required 2)
+//        whatsNewController.appViewController = (self)
+//        whatsNewController.alertMessage = "-Pugs no longer deficate when barking.\n-Pugs with three legs now have expected fourth leg in appropriate place.\n-When repositioning collar, Pug's head no longer separates from body."
+//        whatsNewController.displayFromStringIfNecessary()
         
         
-        //TODO: remove these button colors in favor of exposing buttons as indicated above.
-// (optional) USE THIS to customize your webview
-//               whatsNewController.customButtonColor = UIColor.yellowColor()
-//               whatsNewController.customBackgroundColor = UIColor.redColor()  //TODO:Remove this
         
-        // (alternatively) If you don't want extra code, you can set the Tint Color of each button in the What's New view controller and the background color of the WhatsNewViewController view.
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //FIXME: Direct access of buttons causing fatal error
+        //Customizing the buttons directly VS using a global color scheme//
+        //Since these buttons might not exist when this page is called how would we access them to change their color?  Perhaps revert to setting a colorState, and assiging that color to all of the buttons
+        //whatsNewController.homeButton.setTitleColor(UIColor .redColor(), forState: UIControlState.Normal)
+        
         
     }
 

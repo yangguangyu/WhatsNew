@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Happy Pugs: The Game"; ObjectID = "7w0-Wk-zWk"; */
+"7w0-Wk-zWk.text" = "Roquets Happy : Le Jeu";
+
+/* Class = "UIViewController"; title = "WhatsNewViewController"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "WhatsNewViewController";
+
+/* Class = "UIButton"; accessibilityLabel = "Forward in Browser"; ObjectID = "KVP-8W-sRD"; */
+"KVP-8W-sRD.accessibilityLabel" = "Vers L'avant";
+
+/* Class = "UIButton"; normalTitle = "→"; ObjectID = "KVP-8W-sRD"; */
+"KVP-8W-sRD.normalTitle" = "→";
+
+/* Class = "UILabel"; text = "Some sweet app."; ObjectID = "OKX-sS-bNq"; */
+"OKX-sS-bNq.text" = "Certains app douce.";
+
+/* Class = "UIButton"; accessibilityLabel = "Back to App Home Page"; ObjectID = "U9c-Qj-Q8k"; */
+"U9c-Qj-Q8k.accessibilityLabel" = "Retour À La Maison";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "U9c-Qj-Q8k"; */
+"U9c-Qj-Q8k.normalTitle" = "X";
+
+/* Class = "UIButton"; accessibilityLabel = "Refresh"; ObjectID = "o7j-vY-JDh"; */
+"o7j-vY-JDh.accessibilityLabel" = "Rafraîchir";
+
+/* Class = "UIButton"; normalTitle = "↻"; ObjectID = "o7j-vY-JDh"; */
+"o7j-vY-JDh.normalTitle" = "↻";
+
+/* Class = "UIButton"; accessibilityLabel = "Back in Browser"; ObjectID = "pJN-0M-PUd"; */
+"pJN-0M-PUd.accessibilityLabel" = "Arrière";
+
+/* Class = "UIButton"; normalTitle = "←"; ObjectID = "pJN-0M-PUd"; */
+"pJN-0M-PUd.normalTitle" = "←";
