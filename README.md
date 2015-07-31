@@ -6,7 +6,7 @@ The What's New version notification system is a simple way for apps to add brief
 **If porting WhatsNew SIMPLE ALERT code into an existing Objective C project that has Swift bridging...**
  >1. Bring WhatsNewController.swift and VersionChecker.swift into your current X-Code project.
  >2. Modify alertMessage text and paste this code into your ViewWillAppear section in your Initial View Controller.
-\```objc
+```objc
 WhatsNewController *whatsNew = [[WhatsNewController alloc]init];
 //(paste any customizations here)
 whatsNew.appViewController = self;
@@ -19,7 +19,7 @@ whatsNew.alertMessage = [NSString stringWithFormat:@"-Feature one. \n-Feature tw
 **If porting WhatsNew WEBPAGE POP-OUT ALERT  or EMBEDDED ALERT code into an existing Objective C project that has Swift bridging...**
 >1. Bring WhatsNewController.swift, VersionChecker.swift, and WhatsNew.storyboard into your current X-Code project.
 >2. Modify alertPageURL text and paste this code into your ViewWillAppear section in your Initial View Controller.
-\```objc
+```objc
 WhatsNewController *whatsNew = [[WhatsNewController alloc]init];
 //(paste any customizations here)
 whatsNew.alertPageURL = [NSURL URLWithString:@"http://www.infusionsoft.com"]; //edit url
@@ -32,7 +32,7 @@ whatsNew.appViewController = self;
 **If porting WhatsNew WEBPAGE POP-OUT or EMBEDDED ALERT code into an existing Swift project...**
 >1. Bring WhatsNewController.swift, VersionChecker.swift, and WhatsNew.storyboard into your current X-Code project.
 >2. Modify alertPageURL text and paste this code into your ViewWillAppear section in your Initial View Controller.
-\```swift
+```swift
 let whatsNewController = WhatsNewController()
 //(paste any customizations here)
 whatsNewController.appViewController = (self)
@@ -43,7 +43,7 @@ whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/P
 **If porting WhatsNew SIMPLE ALERT code into an existing Swift project...**
 > 1. Bring WhatsNewController.swift and VersionChecker.swift into your current X-Code project.
 >2. Modify alertMessage text and paste this code into your ViewWillAppear section in your Initial View Controller.
-\```swift
+```swift
 let whatsNewController = WhatsNewController()
 //(paste any customizations here)
 whatsNewController.appViewController = (self)
