@@ -123,7 +123,7 @@ extension UIApplication {
         }
     }
     
-    public static var isUpdatedVersion: Bool { //TODO:..  make it so that on first run has the option to show a popup, or present other information.
+    public static var isUpdatedVersion: Bool {
         
         var result: Bool = false
         

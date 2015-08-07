@@ -149,7 +149,7 @@ class WhatsNewController: UIViewController {
         
         let OKAction: UIAlertAction = UIAlertAction(title: firstRunOk, style: .Default) { action -> Void in
             
-            UIApplication.persistVersion() //TODO: redundant?
+            //no need to persist here, already persist at any first run.
             
         }
         
