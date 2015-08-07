@@ -315,6 +315,7 @@
 				68C3F99D1B6BBF0500AA0FC8 /* ko */,
 			);
 			name = LaunchScreen.xib;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 		68B95B3E1B651A1A009045D8 /* Localizable.strings */ = {
@@ -328,6 +329,7 @@
 				68C3F99E1B6BBF0500AA0FC8 /* ko */,
 			);
 			name = Localizable.strings;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
