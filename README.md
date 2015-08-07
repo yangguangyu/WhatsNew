@@ -53,22 +53,21 @@ whatsNewController.displayFromStringIfNecessary()
 -----------------------------
 
 #TIPS
-
- - In regards to displayFromURLIfNeccessaryInsideApp you can either pop
+ > In regards to displayFromURLIfNeccessaryInsideApp you can either pop
    out a Safari window by using
    displayFromURLIfNeccessaryInsideApp:false,  or you can embed the
    webpage inside our custom ViewController with
    displayFromURLIfNeccessaryInsideApp:true.  Either option requires
    that you designate an whatsNewController.alertPageURL which is the
    webpage containing all of your version details.
- - For simple text alerts, edit the "whatsNewController.alertMessage"
+ > For simple text alerts, edit the "whatsNewController.alertMessage"
    which will provide the user with details regarding your new app's
    version. If you decide not to include a
    "whatsNewController.alertMessage", the user will be alerted that a
    new version has been installed, without any details.
- - Alerts for each version will only happen once, the first time the app
+ > Alerts for each version will only happen once, the first time the app
    is launched.
------------------------------
+
 
 # CUSTOMIZATIONS
 
