@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YsE-lf-AH4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--WhatsNew-->
+        <scene sceneID="Whl-KV-dS6">
+            <objects>
+                <viewController storyboardIdentifier="Main" title="WhatsNew" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YsE-lf-AH4" customClass="MainViewController" customModule="WhatsNew" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w5M-dB-jfs"/>
+                        <viewControllerLayoutGuide type="bottom" id="hSH-4R-SA8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o5i-dX-uiz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some sweet app." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmB-Ic-Iox">
+                                <rect key="frame" x="11" y="555" width="573" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="D7n-Ec-qet"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="241" verticalCompressionResistancePriority="740" image="happypug.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3fG-wN-EXH">
+                                <rect key="frame" x="0.0" y="159" width="616" height="273"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="900" constant="273" id="hbx-w5-7E4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Pugs: The Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pe-gO-WgE">
+                                <rect key="frame" x="16" y="28" width="575" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DWY-9o-zgW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.51503614060860359" green="0.10720370240452318" blue="0.67380689538043481" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3fG-wN-EXH" firstAttribute="leading" secondItem="o5i-dX-uiz" secondAttribute="leadingMargin" constant="-16" id="14B-nu-PBb"/>
+                            <constraint firstItem="1pe-gO-WgE" firstAttribute="top" secondItem="w5M-dB-jfs" secondAttribute="bottom" constant="8" id="1XX-le-2Aa"/>
+                            <constraint firstItem="gmB-Ic-Iox" firstAttribute="leading" secondItem="o5i-dX-uiz" secondAttribute="leadingMargin" constant="-5" id="1uE-HA-hXr"/>
+                            <constraint firstItem="gmB-Ic-Iox" firstAttribute="trailing" secondItem="o5i-dX-uiz" secondAttribute="trailingMargin" id="GZJ-iI-LU8"/>
+                            <constraint firstItem="3fG-wN-EXH" firstAttribute="top" secondItem="1pe-gO-WgE" secondAttribute="bottom" constant="81" id="Hh2-58-HsP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3fG-wN-EXH" secondAttribute="trailing" constant="-32" id="LsG-fV-6BV"/>
+                            <constraint firstItem="1pe-gO-WgE" firstAttribute="leading" secondItem="o5i-dX-uiz" secondAttribute="leadingMargin" id="S7J-VZ-dOs"/>
+                            <constraint firstItem="hSH-4R-SA8" firstAttribute="top" secondItem="gmB-Ic-Iox" secondAttribute="bottom" constant="8" id="X4l-rf-0VZ"/>
+                            <constraint firstItem="gmB-Ic-Iox" firstAttribute="top" secondItem="3fG-wN-EXH" secondAttribute="bottom" priority="990" constant="123" id="aXw-M1-Tc9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1pe-gO-WgE" secondAttribute="trailing" constant="-7" id="xP9-Uf-Mh6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZS-vS-5k2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="323" y="-690"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="happypug.jpg" width="236" height="261"/>
+    </resources>
+</document>

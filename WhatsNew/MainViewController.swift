@@ -25,12 +25,12 @@ class MainViewController: UIViewController {
         
 
         //EXAMPLE WITH SIMPLE STRING
-        let whatsNewController = WhatsNewController()
-                //insert customizations here
-        whatsNewController.appViewController = (self)
-        whatsNewController.alertMessage = "-Pugs with three legs now have expected fourth leg.\n-When repositioning collar, Pug's head no longer separates from body.\n-Pugs no longer deficate whenever they bark."
-        whatsNewController.displayFromStringIfNecessary()
-        
+//        let whatsNewController = WhatsNewController()
+//                //insert customizations here
+//        whatsNewController.appViewController = (self)
+//        whatsNewController.alertMessage = "-Pugs with three legs now have expected fourth leg.\n-When repositioning collar, Pug's head no longer separates from body.\n-Pugs no longer deficate whenever they bark."
+//        whatsNewController.displayFromStringIfNecessary()
+       
         
         
         //EXAMPLE WITH SIMPLE STRING AND CUSTOMIZATION
@@ -50,11 +50,11 @@ class MainViewController: UIViewController {
     
         
         //-----EXAMPLE WITH URL
-//        let whatsNewController = WhatsNewController()
-//        //insert customizations here
-//        whatsNewController.appViewController = (self)
-//        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
-//        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
+        let whatsNewController = WhatsNewController()
+        //insert customizations here
+        whatsNewController.appViewController = (self)
+        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
         
         
         
