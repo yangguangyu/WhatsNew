@@ -29,7 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6834D2CF1B7E075100F2A654 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Source/Main.storyboard; sourceTree = "<group>"; };
+		6834D2CF1B7E075100F2A654 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Example/Main.storyboard; sourceTree = "<group>"; };
 		688E99641B34AE06001B25D2 /* WhatsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		688E99681B34AE06001B25D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		688E99691B34AE06001B25D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,8 +38,8 @@
 		688E99791B34AE06001B25D2 /* WhatsNewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsNewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		688E997E1B34AE06001B25D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		688E997F1B34AE06001B25D2 /* WhatsNewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewTests.swift; sourceTree = "<group>"; };
-		688E998D1B34DDB5001B25D2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		688E998F1B35924D001B25D2 /* happypug.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = happypug.jpg; sourceTree = "<group>"; };
+		688E998D1B34DDB5001B25D2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../Example/MainViewController.swift; sourceTree = "<group>"; };
+		688E998F1B35924D001B25D2 /* happypug.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = happypug.jpg; path = ../Example/happypug.jpg; sourceTree = "<group>"; };
 		68B95B2E1B5F3595009045D8 /* VersionChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
 		68FAEF381B7E0F06005AB84B /* WhatsNew.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WhatsNew.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +67,7 @@
 			children = (
 				6834D2CF1B7E075100F2A654 /* Main.storyboard */,
 				688E998D1B34DDB5001B25D2 /* MainViewController.swift */,
+				688E998F1B35924D001B25D2 /* happypug.jpg */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -115,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				688E99691B34AE06001B25D2 /* AppDelegate.swift */,
-				688E998F1B35924D001B25D2 /* happypug.jpg */,
 				688E99681B34AE06001B25D2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -198,6 +198,9 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 688E995B1B34AE06001B25D2;
 			productRefGroup = 688E99651B34AE06001B25D2 /* Products */;
 			projectDirPath = "";
