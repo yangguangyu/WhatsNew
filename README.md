@@ -40,6 +40,7 @@ whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/P
         whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
 ```
 ----------------------------------
+
 **If porting WhatsNew SIMPLE ALERT code into an existing Swift project...**
 > 1. Bring WhatsNewController.swift and VersionChecker.swift into your current X-Code project.
 >2. Modify alertMessage text and paste this code into your ViewWillAppear section in your Initial View Controller.
