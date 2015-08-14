@@ -9,8 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
- 
-    //MARK: View Dids
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,16 +17,50 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    
+    
     override func viewDidAppear(animated: Bool) {
+        
+        
+
+        //EXAMPLE WITH SIMPLE STRING
+        let whatsNewController = WhatsNewController()
+                //insert customizations here
+        whatsNewController.appViewController = (self)
+        whatsNewController.alertMessage = "-Pugs with three legs now have expected fourth leg.\n-When repositioning collar, Pug's head no longer separates from body.\n-Pugs no longer deficate whenever they bark."
+        whatsNewController.displayFromStringIfNecessary()
+        
+        
+        
+        //EXAMPLE WITH SIMPLE STRING AND CUSTOMIZATION
+        //        let whatsNewController = WhatsNewController()
+        //        whatsNewController.alertOk = "Sounds good."
+        //        whatsNewController.alertUpdatedToVersion = "Presenting Version "
+        //        whatsNewController.showOnFirstLaunch = true
+        //        whatsNewController.firstRunOk = "Sounds good."
+        //        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
+        //        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
+        //        whatsNewController.appViewController = (self)
+        //        whatsNewController.alertMessage = "-Pugs with three legs now have expected fourth leg.\n-When repositioning collar, Pug's head no longer separates from body.\n-Pugs no longer deficate whenever they bark."
+        //        whatsNewController.displayFromStringIfNecessary()
+
+        
+
     
         
-//------//-----CHOOSE THIS
-        //-----Option to post alert via a NSURL
+        //-----EXAMPLE WITH URL
+//        let whatsNewController = WhatsNewController()
+//        //insert customizations here
+//        whatsNewController.appViewController = (self)
+//        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+//        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
         
-        // (required 1)
-        let whatsNewController = WhatsNewController()
         
-        //(paste any customizations here)
+        
+        
+        //-----EXAMPLE WITH URL AND CUSTOMIZATIONS
+//        let whatsNewController = WhatsNewController()
 //        whatsNewController.alertOk = "Yep"
 //        whatsNewController.alertNoThanks = "Nope"
 //        whatsNewController.alertUpdatedToVersion = "Presenting Version "
@@ -39,38 +72,14 @@ class MainViewController: UIViewController {
 //        whatsNewController.customModalTransition = UIModalTransitionStyle.PartialCurl
 //        whatsNewController.customButtonColor = UIColor.yellowColor()
 //        whatsNewController.customBackgroundColor = UIColor.redColor()
-        
-        //(required 2)
-        whatsNewController.appViewController = (self)
-        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
-        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
-        
-//------//-----OR CHOOSE THIS
-        //-----Option to post alert via an NSString
-        
-        //(required 1)
-//        let whatsNewController = WhatsNewController()
-//        
-        //(paste any customizations here)
-////      whatsNewController.alertOk = "Sounds good."
-////      whatsNewController.alertUpdatedToVersion = "Presenting Version "
-////      whatsNewController.showOnFirstLaunch = true
-//        whatsNewController.firstRunOk = "Sounds good."
-//        whatsNewController.firstRunTitle = "Welcome to Happy Pugs!"
-//        whatsNewController.firstRunMessage = "Hey, thanks for trying out Happy Pugs!"
-//        
-//        //(required 2)
 //        whatsNewController.appViewController = (self)
-//        whatsNewController.alertMessage = "-Pugs no longer deficate when barking.\n-Pugs with three legs now have expected fourth leg in appropriate place.\n-When repositioning collar, Pug's head no longer separates from body."
-//        whatsNewController.displayFromStringIfNecessary()
+//        whatsNewController.alertPageURL = NSURL(string: "https://en.wikipedia.org/wiki/Pug") //edit url
+//        whatsNewController.displayFromURLIfNeccessaryInsideApp(true) //edit true or false
+        
+
         
         
-        
-        
+
     }
-
-
 }
-
-
 
