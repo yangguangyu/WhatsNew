@@ -1,6 +1,6 @@
 ####What's New: Version Notification System by Dave Levy
 #Overview
-The What's New version notification system is a simple way for apps to add brief notification alerts when a new version of their app is installed.  The first time What's New detects a new version is launched, the user is presented with a brief description of brand new features.  The app developer can choose to either present this information via a live webpage,  or from a simple string included in their app.  What's New is coded in Swift and can also be used in Swift-bridged Objective C projects.
+The What's New version notification system is a simple way for apps to add brief notification alerts when a new version of their app is launched.  The first time What's New detects a new version, the user is presented with a brief description of brand new features.  The app developer can choose to either present this information via a live webpage,  or from a simple string included in their app.  What's New is coded in Swift and can also be used in Swift-bridged Objective C projects.
    
 # Instructions   
 **If porting WhatsNew SIMPLE ALERT code into an existing Objective C project that has Swift bridging...**
