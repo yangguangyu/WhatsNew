@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 # perhaps include sample project information and xcodeproj link here later.
   s.license      = { :type => 'MIT', :file =>'LICENSE' }
   s.author             = { "David Levy" => "davestrand242@gmail.com" }
-  s.social_media_url   = "https://www.linkedin.com/in/strandland"
+  s.social_media_url   = "http://twitter.com/davestrand"
   s.platform     = :ios, '8.0'
   s.homepage = 'https://github.com/davestrand/'
   s.source       = { :git => "https://github.com/davestrand/WhatsNew.git", :tag => "0.1.2" }
